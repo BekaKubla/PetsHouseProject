@@ -1,0 +1,127 @@
+﻿@model PetsProject.ViewModels.VetRegistrationViewModel
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link href="~/VetRegistration/css/VetRegistration.css" rel="stylesheet" />
+
+<div class="container">
+    <h1 class="well">ვეტერინარის რეგისტრაციის ფორმა</h1>
+    <div class="col-lg-12 well">
+        <div class="row">
+            <form method="post" asp-action="VetRegistration">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>სახელი</label>
+                            <input type="text" asp-for="Name" placeholder="ჩაწერეთ სახელი.." class="form-control">
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>გვარი</label>
+                            <input type="text" asp-for="Surname" placeholder="ჩაწერეთ გვარი.." class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>თქვენ შესახებ</label>
+                        <textarea placeholder="დაწერეთ თქვენს შესახებ(მაქს.150 სიტყვა).." asp-for="About" rows="3" class="form-control"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 form-group">
+                            <label>ქალაქი</label>
+                            <input type="text" placeholder="ჩაწერეთ ქალაქი.." asp-for="City" class="form-control">
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label>მისამართი</label>
+                            <input type="text" placeholder="ჩაწერეთ მისამართი.." asp-for="Adress" class="form-control">
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label>ასაკი</label>
+                            <input type="text" placeholder="ჩაწერეთ თქვენი ასაკი.." asp-for="Age" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>პოზიციის დასახელება</label>
+                            <input type="text" placeholder="მაგ:ქირურგი.." asp-for="Position" class="form-control">
+                        </div>
+                        <div class="col-sm-6 form-group">
+                            <label>კომპანია</label>
+                            <input type="text" placeholder="ჩაწერეთ კომპანიის დასახელება.." asp-for="CompanyName" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>მობილურის ნომერი</label>
+                        <input type="text" placeholder=" xxx xx xx xx.." asp-for="PhoneNumber" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-info">რეგისტრაცია</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                <h2 class="footer-heading">PetsHouse</h2>
+                <p>ვებ სივრცე შინაური ცხოველებისთვის.</p>
+                <ul class="ftco-footer-social p-0">
+                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
+                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
+                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
+                <h2 class="footer-heading">სწრაფი გადასვლა</h2>
+                <ul class="list-unstyled">
+                    <li><a asp-controller="Home" asp-action="Index" class="py-2 d-block">მთავარი</a></li>
+                    <li><a asp-controller="Home" asp-action="Gallery" class="py-2 d-block">ფოტო გალერეა</a></li>
+                    <li><a asp-controller="Home" asp-action="Blog" class="py-2 d-block">ბლოგი</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact" class="py-2 d-block">კონტაქტი</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                <h2 class="footer-heading">გაქვს შეკითხვა?</h2>
+                <div class="block-23 mb-3">
+                    <ul>
+
+                        <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+995 12 34 56</span></a></li>
+                        <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+
+                <p class="copyright">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="~/js/popper.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/jquery.easing.1.3.js"></script>
+<script src="~/js/jquery.waypoints.min.js"></script>
+<script src="~/js/jquery.stellar.min.js"></script>
+<script src="~/js/jquery.animateNumber.min.js"></script>
+<script src="~/js/bootstrap-datepicker.js"></script>
+<script src="~/js/jquery.timepicker.min.js"></script>
+<script src="~/js/owl.carousel.min.js"></script>
+<script src="~/js/jquery.magnific-popup.min.js"></script>
+<script src="~/js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="~/js/google-map.js"></script>
+<script src="~/js/main.js"></script>
