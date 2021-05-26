@@ -14,6 +14,7 @@ namespace PetsProject.Models
         [DataType(DataType.Password)]
         [Display(Name ="პაროლი")]
         public string Password { get; set; }
+        public int? GenderValue { get; set; }
 
         public UserEdit() { }
         public UserEdit(AppUser appUser)

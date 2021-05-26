@@ -19,7 +19,14 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
-                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                            @if (Model.UserGender == 0)
+                            {
+                                <img src="~/images/avatargirl.png" alt="Admin" class="rounded-circle" width="150">
+                            }
+                            else
+                            {
+                                <img src="~/images/avatarboy.png" alt="Admin" class="rounded-circle" width="150">
+                            }
                             <div class="mt-3">
                                 <h4>@Model.UserName</h4>
                             </div>
@@ -59,6 +66,23 @@
                             </div>
                             <div class="col-sm-9 text-secondary">
                                 @Model.Email
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">სქესი</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                @if (Model.UserGender == 0)
+                                {
+                                    <h6>მდედრობითი</h6>
+                                }
+                                else
+                                {
+                                    <h6>მამრობითი</h6>
+                                }
+
                             </div>
                         </div>
                         <hr>

@@ -23,7 +23,8 @@ namespace PetsProject.Controllers
         {
             var appUser = await _userManager.FindByNameAsync(User.Identity.Name);
             user.Email = appUser.Email;
-            var productList = _vetContext.GetAllVet(vetRegistracion).Where(e => e.Email == user.Email).ToList();
+            user.UserName = appUser.UserName;
+            var productList = _vetContext.GetAllVet(vetRegistracion).Where(e => e.UserName == user.UserName).ToList();
             return View(productList);
         }
     }

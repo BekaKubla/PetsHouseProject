@@ -44,19 +44,41 @@ namespace PetsProject.Controllers
                 AppUser appUser = new AppUser
                 {
                     UserName = user.UserName,
-                    Email = user.Email
+                    Email = user.Email,
+                    GenderValue=user.UserGender
+
                 };
+                var findUser = await _userManager.FindByEmailAsync(appUser.Email);
+                if (findUser != null)
+                {
+                    while (findUser != null)
+                    {
+                        ModelState.AddModelError("", "ელ-ფოსტა " + appUser.Email + " გამოყენებულია,სცადეთ სხვა ელ-ფოსტა");
+                        return View(user);
+                    }
+                }
                 var userResult = await _userManager.CreateAsync(appUser, user.Password);
                 if (userResult.Succeeded)
                 {
                     await _signInManager.SignInAsync(appUser, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("UserProfile");
                 }
                 else
                 {
                     foreach(var item in userResult.Errors)
                     {
-                        ModelState.AddModelError("", item.Description);
+                        if (item.Code == "DuplicateUserName")
+                        {
+                            ModelState.AddModelError("","სახელი "+appUser.UserName +" გამოყენებულია,სცადეთ სხვა სახელი");
+                        }
+                        else if(item.Code== "PasswordTooShort")
+                        {
+                            ModelState.AddModelError("", "პაროლი უნდა შეიცავდეს 4 სიმბოლოზე მეტს");
+                        }
+                        else if(item.Code== "PasswordRequiresUpper")
+                        {
+                            ModelState.AddModelError("", "პაროლი უნდა შეიცავდეს ერთ დიდ სიმბოლოს");
+                        }
                     }
                 }
             }
@@ -65,13 +87,9 @@ namespace PetsProject.Controllers
         }
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Login(string returnUrl)
+        public IActionResult Login()
         {
-            Login login = new Login
-            {
-                ReturnUrl = returnUrl
-            };
-            return View(login);
+            return View();
         }
         [HttpPost]
         [AllowAnonymous]
@@ -87,7 +105,7 @@ namespace PetsProject.Controllers
                     var result = await _signInManager.PasswordSignInAsync(appUser, login.Password, false, false);
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("UserProfile");
                     }
                 }
                     ModelState.AddModelError("", "შეყვანილი ინფორმაცია არასწორია.");
@@ -104,6 +122,7 @@ namespace PetsProject.Controllers
         {
             var appUser = await _userManager.FindByNameAsync(User.Identity.Name);
             UserEdit user = new UserEdit(appUser);
+            user.GenderValue = appUser.GenderValue;
             return View(user);
         }
         [HttpPost]
@@ -112,18 +131,41 @@ namespace PetsProject.Controllers
             var appUser = await _userManager.FindByNameAsync(User.Identity.Name);
             if (ModelState.IsValid)
             {
-                appUser.Email = userEdit.Email;
+                var findUser = await _userManager.FindByEmailAsync(userEdit.Email);
+                if (userEdit.Email != appUser.Email)
+                {
+                    if (findUser != null)
+                    {
+                        ModelState.AddModelError("", "ელ-ფოსტა " + userEdit.Email + " უკვე გამოყენებულია,სცადეთ სხვა ელ-ფოსტა");
+                        userEdit.Email = appUser.Email;
+                        return View(userEdit);
+                    }
+                    else
+                    {
+                        appUser.Email = userEdit.Email;
+                        appUser.GenderValue = userEdit.GenderValue;
+                    }
+                }
                 if (userEdit.Password != null)
                 {
-                    appUser.PasswordHash = _passwordHasher.HashPassword(appUser, userEdit.Password);
+                    if (userEdit.Password.Length <= 4)
+                    {
+                        ModelState.AddModelError("", "პაროლი უნდა შეიცავდეს 4 სიმბოლოზე მეტს.");
+                        return View(userEdit);
+                    }
+                    else
+                    {
+                        appUser.PasswordHash = _passwordHasher.HashPassword(appUser, userEdit.Password);
+                    }
                 }
+                appUser.GenderValue = userEdit.GenderValue;
                 IdentityResult result = await _userManager.UpdateAsync(appUser);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("UserProfile");
                 }
             }
-            return View();
+            return View(userEdit);
         }
 
         public async Task< IActionResult> UserProfile(User user,VetRegistracion vetRegistracion)
@@ -131,7 +173,15 @@ namespace PetsProject.Controllers
             var appUser = await _userManager.FindByNameAsync(User.Identity.Name);
             user.Email = appUser.Email;
             user.UserName = appUser.UserName;
-            user.VetCount = _vetContext.GetAllVet(vetRegistracion).Where(e => e.Email == user.Email).ToList().Count();
+            if (appUser.GenderValue == 0)
+            {
+                user.UserGender = 0;
+            }
+            else
+            {
+                user.UserGender = 1;
+            }
+            //user.VetCount = _vetContext.GetAllVet(vetRegistracion).Where(e => e.UserName == user.UserName).ToList().Count();
             return View(user);
         }
     }

@@ -10,5 +10,16 @@ namespace PetsProject.Models
     public class AppUser  : IdentityUser
     {
         public string Occupation { get; set; }
+        [Required(ErrorMessage ="სქესის არჩევა აუცილებელია")]
+        [Display(Name ="სქესი")]
+        public Gender? UserGender { get; set; }
+        [Required(ErrorMessage = "სქესის არჩევა აუცილებელია")]
+        [Display(Name = "სქესი")]
+        public int? GenderValue { get; set; }
+        public enum Gender
+        {
+            მდედრობითი,
+            მამრობითი
+        }
     }
 }

@@ -9,49 +9,67 @@
     <h1 class="well">ვეტერინარის რეგისტრაციის ფორმა</h1>
     <div class="col-lg-12 well">
         <div class="row">
-            <form method="post" asp-action="VetRegistration">
+            <form method="post" enctype="multipart/form-data" asp-action="VetRegistration">
                 <div class="col-sm-12">
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>სახელი</label>
                             <input type="text" asp-for="Name" placeholder="ჩაწერეთ სახელი.." class="form-control">
+                            <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                         <div class="col-sm-6 form-group">
                             <label>გვარი</label>
                             <input type="text" asp-for="Surname" placeholder="ჩაწერეთ გვარი.." class="form-control">
+                            <span asp-validation-for="Surname" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>თქვენ შესახებ</label>
-                        <textarea placeholder="დაწერეთ თქვენს შესახებ(მაქს.150 სიტყვა).." asp-for="About" rows="3" class="form-control"></textarea>
+                        <textarea placeholder="დაწერეთ თქვენს შესახებ(მაქს.300 სიტყვა).." asp-for="About" rows="3" class="form-control"></textarea>
+                        <span asp-validation-for="About" class="text-danger"></span>
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
                             <label>ქალაქი</label>
-                            <input type="text" placeholder="ჩაწერეთ ქალაქი.." asp-for="City" class="form-control">
+                            <select asp-for="City" class="form-control" asp-items="@Html.GetEnumSelectList<PetsProject.Models.City>()">
+                                <option selected="selected" value="">გთხოვთ აირჩიეთ ქალაქი..</option>
+                            </select>
+                            <span asp-validation-for="City" class="text-danger"></span>
                         </div>
                         <div class="col-sm-4 form-group">
                             <label>მისამართი</label>
                             <input type="text" placeholder="ჩაწერეთ მისამართი.." asp-for="Adress" class="form-control">
+                            <span asp-validation-for="Adress" class="text-danger"></span>
                         </div>
                         <div class="col-sm-4 form-group">
                             <label>ასაკი</label>
                             <input type="text" placeholder="ჩაწერეთ თქვენი ასაკი.." asp-for="Age" class="form-control">
+                            <span asp-validation-for="Age" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group">
                             <label>პოზიციის დასახელება</label>
                             <input type="text" placeholder="მაგ:ქირურგი.." asp-for="Position" class="form-control">
+                            <span asp-validation-for="Position" class="text-danger"></span>
                         </div>
                         <div class="col-sm-6 form-group">
                             <label>კომპანია</label>
                             <input type="text" placeholder="ჩაწერეთ კომპანიის დასახელება.." asp-for="CompanyName" class="form-control">
+                            <span asp-validation-for="CompanyName" class="text-danger"></span>
                         </div>
                     </div>
                     <div class="form-group">
                         <label>მობილურის ნომერი</label>
                         <input type="text" placeholder=" xxx xx xx xx.." asp-for="PhoneNumber" class="form-control">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>ატვირთე ფოტო</label>
+                        <div class="custom-file">
+                            <input asp-for="VetPhoto" class="custom-file-input" />
+                            <label class="custom-file-label" for="customFile">ფოტოს ატვირთვა...</label>
+                        </div>
                     </div>
                     <button type="submit" class="btn btn-lg btn-info">რეგისტრაცია</button>
                 </div>
