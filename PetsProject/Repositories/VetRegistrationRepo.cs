@@ -32,6 +32,12 @@ namespace PetsProject.Repositories
             return vetRegistracion;
         }
 
+        public VetRegistracion RemoveVet(VetRegistracion vetRegistracion)
+        {
+            _context.GetVetRegistraiton.Remove(vetRegistracion);
+            return vetRegistracion;
+        }
+
         public bool SaveChange()
         {
             return (_context.SaveChanges() >= 0);

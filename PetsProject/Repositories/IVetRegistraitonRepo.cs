@@ -11,6 +11,7 @@ namespace PetsProject.Repositories
         VetRegistracion RegisterVet(VetRegistracion vetRegistracion);
         IEnumerable<VetRegistracion> GetAllVet(VetRegistracion vetRegistracion);
         VetRegistracion GetVetById(int id);
+        VetRegistracion RemoveVet(VetRegistracion vetRegistracion);
         bool SaveChange();
     }
 }

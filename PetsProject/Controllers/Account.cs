@@ -32,6 +32,7 @@ namespace PetsProject.Controllers
         public IActionResult Register()
         {
             return View();
+
         }
         [HttpPost]
         [AllowAnonymous]
@@ -137,7 +138,7 @@ namespace PetsProject.Controllers
                     if (findUser != null)
                     {
                         ModelState.AddModelError("", "ელ-ფოსტა " + userEdit.Email + " უკვე გამოყენებულია,სცადეთ სხვა ელ-ფოსტა");
-                        userEdit.Email = appUser.Email;
+                        ModelState.FirstOrDefault(x => x.Key == nameof(userEdit.Email)).Value.RawValue = appUser.Email;
                         return View(userEdit);
                     }
                     else
@@ -181,7 +182,7 @@ namespace PetsProject.Controllers
             {
                 user.UserGender = 1;
             }
-            //user.VetCount = _vetContext.GetAllVet(vetRegistracion).Where(e => e.UserName == user.UserName).ToList().Count();
+            user.VetCount = _vetContext.GetAllVet(vetRegistracion).Where(e => e.UserName == user.UserName).ToList().Count();
             return View(user);
         }
     }

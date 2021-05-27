@@ -88,6 +88,23 @@ namespace PetsProject.Controllers
             var findVetByCity = _context.GetAllVet(vetRegistracion).Where(e=>e.City==City.თბილისი);
             return View(findVetByCity);
         }
+        [Authorize]
+        public async Task<IActionResult> RemoveVet(int id)
+        {
+            var getVet = _context.GetVetById(id);
+            var findUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (findUser.UserName == getVet.UserName)
+            {
+                _context.RemoveVet(getVet);
+                _context.SaveChange();
+                return RedirectToAction("UserProducts", "UserProduct");
+            }
+            else
+            {
+                TempData["Message"] = "მსგავსი განცხადება თქვენ არ გეკუთვნით";
+                return RedirectToAction("Userproducts","UserProduct");
+            }
+        }
 
     }
 }

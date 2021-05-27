@@ -22,6 +22,6 @@ namespace PetsProject.Models
         public int VetCount { get; set; }
         [Required(ErrorMessage = "სქესის არჩევა აუცილებელია")]
         [Display(Name = "სქესი")]
-        public int? UserGender { get; set; }
+        public int UserGender { get; set; }
     }
 }

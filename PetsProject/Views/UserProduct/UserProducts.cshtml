@@ -30,16 +30,23 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-end">
                 <div class="col-md-9 ftco-animate pb-5">
-                    <p class="breadcrumbs mb-2"><span class="mr-2"><a asp-controller="Home" asp-action="Index">მთავარი <i class="ion-ios-arrow-forward"></i></a></span>
-                    <span class="mr-2"><a asp-controller="Account" asp-action="UserProfile">პირადი სივრცე <i class="ion-ios-arrow-forward"></i></a></span>
-                    <span>ჩემი განცხადებები <i class="ion-ios-arrow-forward"></i></span></p>
-
+                    <p class="breadcrumbs mb-2">
+                        <span class="mr-2"><a asp-controller="Home" asp-action="Index">მთავარი <i class="ion-ios-arrow-forward"></i></a></span>
+                        <span class="mr-2"><a asp-controller="Account" asp-action="UserProfile">პირადი სივრცე <i class="ion-ios-arrow-forward"></i></a></span>
+                        <span>ჩემი განცხადებები <i class="ion-ios-arrow-forward"></i></span>
+                    </p>
                     <h1 class="mb-0 bread">ჩემი განცხადებები</h1>
+                    <br />
+                    @if (TempData["Message"] != null)
+                    {
+                        <div>
+                            <h6 class="text-danger">@TempData["Message"]</h6>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
     </section>
-
     <section class="ftco-section bg-light">
         <div class="container">
             <div class="row">
@@ -48,7 +55,7 @@
                     <div class="col-md-6 col-lg-3 ftco-animate">
                         <div class="staff">
                             <div class="img-wrap d-flex align-items-stretch">
-                                <img src="~/images/pricing-3.jpg" />
+                                <img src="@item.VetphotoUrl" />
                                 <div class="img align-self-stretch"></div>
                             </div>
                             <a asp-controller="Vet" asp-action="VetDetails" asp-route-id="@item.ID">
@@ -60,6 +67,9 @@
                                     </div>
                                 </div>
                             </a>
+                            <div class="text pt-3 px-3 pb-4 text-center">
+                                <a asp-controller="Vet" asp-action="RemoveVet" asp-route-id=@item.ID><span class="position mb-2" style="color:red;">წაშლა</span></a>
+                            </div>
                         </div>
                     </div>
                 }

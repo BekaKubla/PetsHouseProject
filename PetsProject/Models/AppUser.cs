@@ -12,10 +12,10 @@ namespace PetsProject.Models
         public string Occupation { get; set; }
         [Required(ErrorMessage ="სქესის არჩევა აუცილებელია")]
         [Display(Name ="სქესი")]
-        public Gender? UserGender { get; set; }
+        public Gender UserGender { get; set; }
         [Required(ErrorMessage = "სქესის არჩევა აუცილებელია")]
         [Display(Name = "სქესი")]
-        public int? GenderValue { get; set; }
+        public int GenderValue { get; set; }
         public enum Gender
         {
             მდედრობითი,
