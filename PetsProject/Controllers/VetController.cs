@@ -26,10 +26,39 @@ namespace PetsProject.Controllers
             _userManager = userManager;
             _env = webHostEnvironment;
         }
+        [HttpGet]
         public IActionResult Vet(VetRegistracion vetRegistracion)
         {
             var getAll = _context.GetAllVet(vetRegistracion);
             return View(getAll);
+        }
+        [HttpPost]
+        public IActionResult Vet(string searchCity, string searchString,VetRegistracion vetRegistracion)
+        {
+            if (searchString == null && searchCity == null)
+            {
+                var getAllVet = _context.GetAllVet(vetRegistracion);
+                return View(getAllVet);
+            }
+            else if (searchString != null && searchCity == null)
+            {
+                var getVetBySearch = _context.GetAllVet(vetRegistracion).Where(e => e.Name.ToLower().Contains(searchString.ToLower())
+                                                                               || e.Surname.ToLower().Contains(searchString.ToLower()));
+                return View(getVetBySearch);
+            }
+            else if (searchCity!=null && searchString == null)
+            {
+                var getVetByCity = _context.GetAllVet(vetRegistracion).Where(e => e.City.ToString().Contains(searchCity));
+                return View(getVetByCity);
+            }
+            else if (searchString != null && searchCity != null)
+            {
+                var getVetByBoth = _context.GetAllVet(vetRegistracion).Where(e => e.City.ToString().Contains(searchCity))
+                                   .Where(e => e.Name.ToLower().Contains(searchString.ToLower())
+                                   || e.Surname.ToLower().Contains(searchString));
+                return View(getVetByBoth);
+            }
+            return View();
         }
         public IActionResult VetDetails(int id)
         {
@@ -82,11 +111,70 @@ namespace PetsProject.Controllers
             }
             return View(vetRegistrationViewModel);
         }
-        //customvet
-        public IActionResult GetCustomVet(VetRegistracion vetRegistracion)
+        [HttpGet]
+        public IActionResult VetEdit(int id)
         {
-            var findVetByCity = _context.GetAllVet(vetRegistracion).Where(e=>e.City==City.თბილისი);
-            return View(findVetByCity);
+            var getVet = _context.GetVetById(id);
+            VetRegistrationViewModel vetRegistracion = new VetRegistrationViewModel
+            {
+                Name = getVet.Name,
+                Surname = getVet.Surname,
+                Age = getVet.Age,
+                Adress = getVet.Adress,
+                City = getVet.City,
+                Email = getVet.Email,
+                PhoneNumber = getVet.PhoneNumber,
+                Position = getVet.Position,
+                About = getVet.About,
+                CompanyName = getVet.CompanyName,
+            };
+            return View(vetRegistracion);
+        }
+        [HttpPost]
+        public async Task<IActionResult> VetEdit(VetRegistrationViewModel vetRegistrationViewModel,int id)
+        {
+            var findVet = _context.GetVetById(id);
+            if (findVet == null)
+            {
+                return NotFound();
+            }
+            else
+            {
+                if (ModelState.IsValid)
+                {
+                    if (vetRegistrationViewModel.VetPhoto != null)
+                    {
+                        string folder = "Images/VetPhoto/";
+                        folder += Guid.NewGuid().ToString() + "_" + vetRegistrationViewModel.VetPhoto.FileName;
+
+                        vetRegistrationViewModel.VetImageUrl = "/" + folder;
+
+                        string serverFolder = Path.Combine(_env.WebRootPath, folder);
+
+                        await vetRegistrationViewModel.VetPhoto.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+                    }
+                    findVet.Name = vetRegistrationViewModel.Name;
+                    findVet.Surname = vetRegistrationViewModel.Surname;
+                    findVet.Age = vetRegistrationViewModel.Age;
+                    findVet.Adress = vetRegistrationViewModel.Adress;
+                    findVet.City = vetRegistrationViewModel.City;
+                    findVet.PhoneNumber = vetRegistrationViewModel.PhoneNumber;
+                    findVet.Position = vetRegistrationViewModel.Position;
+                    findVet.About = vetRegistrationViewModel.About;
+                    findVet.CompanyName = vetRegistrationViewModel.CompanyName;
+                    if (vetRegistrationViewModel.VetImageUrl == null)
+                    {
+                        vetRegistrationViewModel.VetImageUrl = findVet.VetphotoUrl;
+                    }
+                    else
+                    {
+                        findVet.VetphotoUrl = vetRegistrationViewModel.VetImageUrl;
+                    }
+                    _context.SaveChange();
+                    return RedirectToAction("UserProducts", "UserProduct");
+                }
+            }
+            return View();
         }
         [Authorize]
         public async Task<IActionResult> RemoveVet(int id)
@@ -104,6 +192,10 @@ namespace PetsProject.Controllers
                 TempData["Message"] = "მსგავსი განცხადება თქვენ არ გეკუთვნით";
                 return RedirectToAction("Userproducts","UserProduct");
             }
+        }
+        public IActionResult Details()
+        {
+            return View();
         }
 
     }

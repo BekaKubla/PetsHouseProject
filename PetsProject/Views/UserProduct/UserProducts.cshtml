@@ -23,6 +23,7 @@
 
     <link rel="stylesheet" href="~/css/flaticon.css">
     <link rel="stylesheet" href="~/css/style.css">
+    <link href="~/VetRegistration/VetList/VetList.css" rel="stylesheet" />
 </head>
 <body>
     <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
@@ -49,26 +50,35 @@
     </section>
     <section class="ftco-section bg-light">
         <div class="container">
-            <div class="row">
+            <div class="row clearfix">
                 @foreach (var item in Model)
                 {
-                    <div class="col-md-6 col-lg-3 ftco-animate">
-                        <div class="staff">
-                            <div class="img-wrap d-flex align-items-stretch">
-                                <img src="@item.VetphotoUrl" />
-                                <div class="img align-self-stretch"></div>
-                            </div>
-                            <a asp-controller="Vet" asp-action="VetDetails" asp-route-id="@item.ID">
-                                <div class="text pt-3 px-3 pb-4 text-center">
-                                    <h3>@item.Name @item.Surname</h3>
-                                    <span class="position mb-2">@item.Position</span>
-                                    <div class="faded">
-                                        <p>@item.City</p>
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <div class="card product_item">
+                            <div class="body">
+                                @if (item.VetphotoUrl == null)
+                                {
+                                    <div class="cp_img">
+                                        <img src="/images/VetPhoto/photonotavailable.jpg" alt="Product" class="img-fluid">
+                                        <div class="hover">
+                                            <a asp-action="VetDetails" asp-route-id="@item.ID"><p style="color:green;">დეტალურად</p></a>
+                                        </div>
                                     </div>
+                                }
+                                else
+                                {
+                                    <div class="cp_img">
+                                        <img style="width:auto;height:auto;" src="@item.VetphotoUrl" alt="Product" class="img-fluid">
+                                        <div class="hover">
+                                            <a asp-controller="Vet" asp-action="VetDetails" asp-route-id="@item.ID"><p style="color:green;">დეტალურად</p></a>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="product_details">
+                                    <h5>@item.Name @item.Surname</h5>
+                                    <a asp-controller="Vet" asp-action="VetEdit" asp-route-id="@item.ID"><p style="color:green;">რედაქტირება</p></a>
+                                    <a asp-controller="Vet" asp-action="RemoveVet" asp-route-id="@item.ID"> <p style="color:red;">წაშლა</p></a>
                                 </div>
-                            </a>
-                            <div class="text pt-3 px-3 pb-4 text-center">
-                                <a asp-controller="Vet" asp-action="RemoveVet" asp-route-id=@item.ID><span class="position mb-2" style="color:red;">წაშლა</span></a>
                             </div>
                         </div>
                     </div>

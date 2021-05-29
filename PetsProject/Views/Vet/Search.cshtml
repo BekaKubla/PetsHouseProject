@@ -4,12 +4,6 @@
     <title>Pet Sitting - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Bootstrap search box or search panel like amazon.com" />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="Satyendra Kumar Singh" />
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
@@ -28,43 +22,19 @@
     <link rel="stylesheet" href="~/css/flaticon.css">
     <link rel="stylesheet" href="~/css/style.css">
     <link href="~/VetRegistration/VetList/VetList.css" rel="stylesheet" />
-    <link href="~/Searchbar/css/SearchBar.css" rel="stylesheet" />
 </head>
+<form method="post" asp-action="Search">
+    ქალაქი : <select asp-items="Html.GetEnumSelectList<PetsProject.Models.City>()"></select>
+    <input type="submit" value="მოძებნა" />
+</form>
 <body>
     <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container">
             <div class="row no-gutters slider-text align-items-end">
                 <div class="col-md-9 ftco-animate pb-5">
-                    <p class="breadcrumbs mb-2"><span class="mr-2"><a asp-controller="Home" asp-action="Index">მთავარი <i class="ion-ios-arrow-forward"></i></a></span> <a asp-action="Vet"><span class="mr-2">ვეტერინარები <i class="ion-ios-arrow-forward"></i></span></a></p>
-                    <h1 class="mb-4 bread">აირჩიე შენთვის სასურველი ვეტერინარი</h1>
-                <section class="search-sec">
-                    <div class="container">
-                        <form asp-action="Vet" method="post" novalidate="novalidate">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                            <input type="text" class="form-control search-slt" name="searchString" placeholder="საძიებო ველი...">
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                            <select class="form-control search-slt" name="searchCity">
-                                                <option>ყველა</option>
-                                                @foreach (var item in Enum.GetValues(typeof(PetsProject.Models.City)))
-                                                {
-                                                    <option value="@item">@item</option>
-                                                }
-                                            </select>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                            <button type="submit" class="btn btn-danger wrn-btn">ძიება</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </section>
+                    <p class="breadcrumbs mb-2"><span class="mr-2"><a asp-controller="Home" asp-action="Index">მთავარი <i class="ion-ios-arrow-forward"></i></a></span> <span>ვეტერინარები <i class="ion-ios-arrow-forward"></i></span></p>
+                    <h1 class="mb-0 bread">აირჩიე შენთვის სასურველი ვეტერინარი</h1>
                 </div>
             </div>
         </div>
@@ -127,5 +97,4 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="~/js/google-map.js"></script>
 <script src="~/js/main.js"></script>
-<script src="~/Searchbar/js/JavaScript.js"></script>
 

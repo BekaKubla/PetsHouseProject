@@ -19,7 +19,6 @@ namespace PetsProject.ViewModels
         public string Surname { get; set; }
         [Required(ErrorMessage ="ქალაქის არჩევა აუცილებელია")]
         public City? City { get; set; }
-        [MinLength(1, ErrorMessage = "კომპანიის სახელი უნდა იყოს 1 სიმბოლოზე მეტი")]
         public string CompanyName { get; set; }
         [Required(ErrorMessage = "ასაკის ველის შევსება სავალდებულოა")]
         [Range(18, 99, ErrorMessage = "ასაკი უნდა იყოს 18 ზე მეტი და 99 ზე ნაკლები")]
