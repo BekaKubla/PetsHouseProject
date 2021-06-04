@@ -165,36 +165,69 @@ namespace PetsProject.Controllers
             return View();
         }
         [Authorize]
-        public IActionResult RemovePet(int id)
+        public async Task< IActionResult> RemovePet(int id)
         {
             var findPet = _petRegistrationRepo.GetPetById(id);
-            _petRegistrationRepo.RemovePet(findPet);
-            _petRegistrationRepo.SaveChange();
-            return RedirectToAction("Index", "Home");
+            var findUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (findPet != null)
+            {
+                if (findUser.UserName != findPet.UserName)
+                {
+                    ModelState.AddModelError("", "მსგავსი განცხადება თქვენ არ გეკუთვნით");
+                }
+                else
+                {
+                    _petRegistrationRepo.RemovePet(findPet);
+                    _petRegistrationRepo.SaveChange();
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "მსგავსი განცხადება არ არსებობს");
+            }
+            return RedirectToAction("PetProducts","UserProduct");
         }
         public IActionResult PetDetails(int id)
         {
             var findPet = _petRegistrationRepo.GetPetById(id);
             return View(findPet);
         }
+        [Authorize]
         [HttpGet]
-        public IActionResult PetEdit(int id)
+        public async Task<IActionResult> PetEdit(int id)
         {
             var findPetById = _petRegistrationRepo.GetPetById(id);
-            PetRegistrationViewModel petRegistrationViewModel = new PetRegistrationViewModel()
+            var findUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            if (findPetById != null)
             {
-                Age = findPetById.Age,
-                City = findPetById.City,
-                ContactName = findPetById.ContactName,
-                Jishebi = findPetById.Jishebi,
-                PetPhotoUrl = findPetById.PetPhotoUrl,
-                PhoneNumber = findPetById.PhoneNumber,
-                Price = findPetById.Price,
-                Sex = findPetById.Sex,
-                Subject = findPetById.Subject,
-                Title = findPetById.Title
-            };
-            return View(petRegistrationViewModel);
+                if (findPetById.UserName == findUser.UserName)
+                {
+                    PetRegistrationViewModel petRegistrationViewModel = new PetRegistrationViewModel()
+                    {
+                        Age = findPetById.Age,
+                        City = findPetById.City,
+                        ContactName = findPetById.ContactName,
+                        Jishebi = findPetById.Jishebi,
+                        PetPhotoUrl = findPetById.PetPhotoUrl,
+                        PhoneNumber = findPetById.PhoneNumber,
+                        Price = findPetById.Price,
+                        Sex = findPetById.Sex,
+                        Subject = findPetById.Subject,
+                        Title = findPetById.Title
+                    };
+                    return View(petRegistrationViewModel);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "მსგავსი განცხადება თქვენ არ გეკუთვნით");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "მსგავსი განცხადება არ არსებობს");
+            }
+            return RedirectToAction("PetProducts", "UserProduct");
         }
         [HttpPost]
         public async Task<IActionResult> PetEditAsync(PetRegistrationViewModel petRegistrationViewModel,int id)
