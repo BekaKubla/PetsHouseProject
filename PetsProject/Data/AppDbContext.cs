@@ -15,5 +15,6 @@ namespace PetsProject.Data
 
         }
         public DbSet<VetRegistracion> GetVetRegistraiton { get; set; }
+        public DbSet<PetRegistration> GetPetRegistration { get; set; }
     }
 }

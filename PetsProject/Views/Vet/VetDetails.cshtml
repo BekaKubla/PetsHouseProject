@@ -10,16 +10,16 @@
 
     <link rel="stylesheet" href="~/css/animate.css">
 
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Main/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Main/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Main/css/magnific-popup.css">
 
 
-    <link rel="stylesheet" href="~/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="~/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="~/Main/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Main/css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="~/css/flaticon.css">
-    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/Main/css/flaticon.css">
+    <link rel="stylesheet" href="~/Main/css/style.css">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -58,16 +58,15 @@
                     <div class="preview col-md-6">
                         @if (Model.VetphotoUrl == null)
                         {
-                            <div class="preview-pic tab-content">
-                                <div class="tab-pane active" id="pic-1"><img src="/images/VetPhoto/photonotavailable.jpg" /></div>
-                            </div>
-                        }
+            <div class="preview-pic tab-content">
+                <div class="tab-pane active" id="pic-1"><img src="/images/VetPhoto/photonotavailable.jpg" /></div>
+            </div> }
                         else
-                        { 
-                            <div class="preview-pic tab-content">
-                                <div class="tab-pane active" id="pic-1"><img src="@Model.VetphotoUrl" /></div>
-                            </div>
-                        }
+                        {
+            <div class="preview-pic tab-content">
+                <div class="tab-pane active" id="pic-1"><img src="@Model.VetphotoUrl" /></div>
+            </div>
+        }
 
                     </div>
                     <div class="details col-md-6">
@@ -80,8 +79,7 @@
                         }
                         else
                         {
-                            <h4 class="price">კომპანია: <span style="color:green;">@Model.CompanyName</span></h4>
-                        }
+            <h4 class="price">კომპანია: <span style="color:green;">@Model.CompanyName</span></h4>}
                         <h4 class="price">პოზიცია: <span style="color:green;">@Model.Position</span></h4>
                         <h4 class="price">ქალაქი: <span style="color:green;">@Model.City</span></h4>
                         <h4 class="price">მისამართი: <span style="color:green;">@Model.Adress</span></h4>
@@ -98,19 +96,19 @@
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
 
-<script src="~/js/jquery.min.js"></script>
-<script src="~/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="~/js/popper.min.js"></script>
-<script src="~/js/bootstrap.min.js"></script>
-<script src="~/js/jquery.easing.1.3.js"></script>
-<script src="~/js/jquery.waypoints.min.js"></script>
-<script src="~/js/jquery.stellar.min.js"></script>
-<script src="~/js/jquery.animateNumber.min.js"></script>
-<script src="~/js/bootstrap-datepicker.js"></script>
-<script src="~/js/jquery.timepicker.min.js"></script>
-<script src="~/js/owl.carousel.min.js"></script>
-<script src="~/js/jquery.magnific-popup.min.js"></script>
-<script src="~/js/scrollax.min.js"></script>
+<script src="~/Main/js/jquery.min.js"></script>
+<script src="~/Main/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="~/Main/js/popper.min.js"></script>
+<script src="~/Main/js/bootstrap.min.js"></script>
+<script src="~/Main/js/jquery.easing.1.3.js"></script>
+<script src="~/Main/js/jquery.waypoints.min.js"></script>
+<script src="~/Main/js/jquery.stellar.min.js"></script>
+<script src="~/Main/js/jquery.animateNumber.min.js"></script>
+<script src="~/Main/js/bootstrap-datepicker.js"></script>
+<script src="~/Main/js/jquery.timepicker.min.js"></script>
+<script src="~/Main/js/owl.carousel.min.js"></script>
+<script src="~/Main/js/jquery.magnific-popup.min.js"></script>
+<script src="~/Main/js/scrollax.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="~/js/google-map.js"></script>
-<script src="~/js/main.js"></script>
+<script src="~/Main/js/google-map.js"></script>
+<script src="~/Main/js/main.js"></script>

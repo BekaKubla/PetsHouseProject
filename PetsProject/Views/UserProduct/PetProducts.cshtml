@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PetsProject.Models.VetRegistracion>
+﻿@model IEnumerable<PetsProject.Models.PetRegistration>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 <!DOCTYPE html>
 <html lang="en">
@@ -56,28 +56,28 @@
                     <div class="col-lg-3 col-md-4 col-sm-12">
                         <div class="card product_item">
                             <div class="body">
-                                @if (item.VetphotoUrl == null)
+                                @if (item.PetPhotoUrl == null)
                                 {
                                     <div class="cp_img">
                                         <img src="/images/VetPhoto/photonotavailable.jpg" alt="Product" class="img-fluid">
                                         <div class="hover">
-                                            <a asp-action="VetDetails" asp-route-id="@item.ID"><p style="color:green;">დეტალურად</p></a>
+                                            <a asp-controller="Pet" asp-action="PetDetails" asp-route-id="@item.ID"><p style="color:green;">დეტალურად</p></a>
                                         </div>
                                     </div>
                                 }
                                 else
                                 {
                                     <div class="cp_img">
-                                        <img style="width:auto;height:auto;" src="@item.VetphotoUrl" alt="Product" class="img-fluid">
+                                        <img style="width:auto;height:auto;" src="@item.PetPhotoUrl" alt="Product" class="img-fluid">
                                         <div class="hover">
-                                            <a asp-controller="Vet" asp-action="VetDetails" asp-route-id="@item.ID"><p style="color:green;">დეტალურად</p></a>
+                                            <a asp-controller="Pet" asp-action="PetDetails" asp-route-id="@item.ID"><p style="color:green;">დეტალურად</p></a>
                                         </div>
                                     </div>
                                 }
                                 <div class="product_details">
-                                    <h5>@item.Name @item.Surname</h5>
-                                    <a asp-controller="Vet" asp-action="VetEdit" asp-route-id="@item.ID"><p style="color:green;">რედაქტირება</p></a>
-                                    <a asp-controller="Vet" asp-action="RemoveVet" asp-route-id="@item.ID"> <p style="color:red;">წაშლა</p></a>
+                                    <h5>@item.Title</h5>
+                                    <a asp-controller="Pet" asp-action="PetEdit" asp-route-id="@item.ID"><p style="color:green;">რედაქტირება</p></a>
+                                    <a asp-controller="Pet" asp-action="RemovePet" asp-route-id="@item.ID"> <p style="color:red;">წაშლა</p></a>
                                 </div>
                             </div>
                         </div>
@@ -141,22 +141,22 @@
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
 
-    <script src="~/js/jquery.min.js"></script>
-    <script src="~/js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="~/js/popper.min.js"></script>
-    <script src="~/js/bootstrap.min.js"></script>
-    <script src="~/js/jquery.easing.1.3.js"></script>
-    <script src="~/js/jquery.waypoints.min.js"></script>
-    <script src="~/js/jquery.stellar.min.js"></script>
-    <script src="~/js/jquery.animateNumber.min.js"></script>
-    <script src="~/js/bootstrap-datepicker.js"></script>
-    <script src="~/js/jquery.timepicker.min.js"></script>
-    <script src="~/js/owl.carousel.min.js"></script>
-    <script src="~/js/jquery.magnific-popup.min.js"></script>
-    <script src="~/js/scrollax.min.js"></script>
+    <script src="~/Main/js/jquery.min.js"></script>
+    <script src="~/Main/js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="~/Main/js/popper.min.js"></script>
+    <script src="~/Main/js/bootstrap.min.js"></script>
+    <script src="~/Main/js/jquery.easing.1.3.js"></script>
+    <script src="~/Main/js/jquery.waypoints.min.js"></script>
+    <script src="~/Main/js/jquery.stellar.min.js"></script>
+    <script src="~/Main/js/jquery.animateNumber.min.js"></script>
+    <script src="~/Main/js/bootstrap-datepicker.js"></script>
+    <script src="~/Main/js/jquery.timepicker.min.js"></script>
+    <script src="~/Main/js/owl.carousel.min.js"></script>
+    <script src="~/Main/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Main/js/scrollax.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="~/js/google-map.js"></script>
-    <script src="~/js/main.js"></script>
+    <script src="~/Main/js/google-map.js"></script>
+    <script src="~/Main/js/main.js"></script>
 
 
 

@@ -11,18 +11,18 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="~/css/animate.css">
+    <link rel="stylesheet" href="~/Main/css/animate.css">
 
-    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="~/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="~/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/Main/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Main/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/Main/css/magnific-popup.css">
 
 
-    <link rel="stylesheet" href="~/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="~/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="~/Main/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="~/Main/css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="~/css/flaticon.css">
-    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="~/Main/css/flaticon.css">
+    <link rel="stylesheet" href="~/Main/css/style.css">
 </head>
 <body>
     <div class="wrap">
@@ -57,6 +57,7 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active"><a asp-controller="Home" asp-action="Index" class="nav-link">მთავარი</a></li>
                     <li class="nav-item"><a asp-controller="Vet" asp-action="Vet" class="nav-link">ვეტერინარები</a></li>
+                    <li class="nav-item"><a asp-controller="Pet" asp-action="GetPets" class="nav-link">ცხოველები</a></li>
                     <li class="nav-item"><a asp-controller="Home" asp-action="Contact" class="nav-link">კონტაქტი</a></li>
                     @if (User?.Identity?.IsAuthenticated ?? false)
                     {

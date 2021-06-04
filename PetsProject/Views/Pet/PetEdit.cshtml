@@ -1,0 +1,234 @@
+﻿@model PetsProject.ViewModels.PetRegistrationViewModel
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Au Register Forms by Colorlib</title>
+
+    <!-- Icons font CSS-->
+    <link href="~/PetRegistration/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/PetRegistration/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="~/PetRegistration/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/PetRegistration/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="~/PetRegistration/css/main.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+        <div class="wrapper wrapper--w790">
+            <div class="card card-5">
+                <div class="card-heading">
+                    <h2 class="title">ყიდვა/გაყიდვა (განცხადების დამატება)</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-action="PetEdit" enctype="multipart/form-data">
+                        <div class="form-row m-b-55">
+                            <div class="name">სათაური</div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" asp-for="Title">
+                                            <label class="label--desc">სათაური</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">სქესი</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select asp-for="Sex" class="form-control" asp-items="@Html.GetEnumSelectList<PetsProject.Models.Sex>()">
+                                            <option disabled="disabled" selected="selected">აირჩიეთ სქესი</option>
+                                        </select>
+                                        <label class="label--desc">ძაღლის სქესი</label>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">ჯიში</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select asp-for="Jishebi" class="form-control" asp-items="@Html.GetEnumSelectList<PetsProject.Models.Jishebi>()">
+                                            <option disabled="disabled" selected="selected">აირჩიეთ სქესი</option>
+                                        </select>
+                                        <label class="label--desc">ძაღლის ჯიში</label>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">ძაღლის ასაკი</div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" asp-for="Age">
+                                            <label class="label--desc">ძაღლის ასაკი</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">ფასი</div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" asp-for="Price">
+                                            <label class="label--desc">ძაღლის ასაკი</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">აღწერა</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-5" type="text" asp-for="Subject">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">მობილურის ნომერი</div>
+                            <div class="value">
+                                <div class="row row-refine">
+                                    <div class="col-7">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" asp-for="PhoneNumber">
+                                            <label class="label--desc">მობილურის ნომერი</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">საკონტაქტო სახელი</div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input class="input--style-5" type="text" asp-for="ContactName">
+                                            <label class="label--desc">საკონტაქტო სახელი</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">ქალაქი</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <div class="rs-select2 js-select-simple select--no-search">
+                                        <select asp-for="City" class="form-control" asp-items="@Html.GetEnumSelectList<PetsProject.Models.City>()">
+                                            <option disabled="disabled" selected="selected">აირჩიეთ ქალაქი</option>
+                                        </select>
+                                        <label class="label--desc">ქალაქი</label>
+                                        <div class="select-dropdown"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row m-b-55">
+                            <div class="name">ატვირთეთ ფოტო</div>
+                            <div class="value">
+                                <div class="row row-space">
+                                    <div class="col-4">
+                                        <div class="input-group-desc">
+                                            <input asp-for="PetPhoto" class="custom-file-input" />
+                                            <label class="custom-file-label" for="customFile">არჩევა</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn--radius-2 btn--red" type="submit">დამატება</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="~/PetRegistration/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="~/PetRegistration/vendor/select2/select2.min.js"></script>
+    <script src="~/PetRegistration/vendor/datepicker/moment.min.js"></script>
+    <script src="~/PetRegistration/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="~/PetRegistration/js/global.js"></script>
+
+</body>
+
+</html>
+<!-- end document-->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                <h2 class="footer-heading">PetsHouse</h2>
+                <p>ვებ სივრცე შინაური ცხოველებისთვის.</p>
+                <ul class="ftco-footer-social p-0">
+                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
+                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
+                    <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
+                <h2 class="footer-heading">სწრაფი გადასვლა</h2>
+                <ul class="list-unstyled">
+                    <li><a asp-controller="Home" asp-action="Index" class="py-2 d-block">მთავარი</a></li>
+                    <li><a asp-controller="Home" asp-action="Gallery" class="py-2 d-block">ფოტო გალერეა</a></li>
+                    <li><a asp-controller="Home" asp-action="Blog" class="py-2 d-block">ბლოგი</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact" class="py-2 d-block">კონტაქტი</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+                <h2 class="footer-heading">გაქვს შეკითხვა?</h2>
+                <div class="block-23 mb-3">
+                    <ul>
+
+                        <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+995 12 34 56</span></a></li>
+                        <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+
+                <p class="copyright">
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;
+                    <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -43,6 +43,13 @@
                 <div class="card mt-3">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <span class="text-secondary"><a asp-controller="Pet" asp-action="PetReg" target="_blank" style="color:green;">ყიდვა/გაყიდვა (განცხადების დამატება)</a></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <span class="text-secondary"><a asp-controller="Account" asp-action="LogOut" style="color:red;">გასვლა</a></span>
                         </li>
                     </ul>
@@ -108,9 +115,9 @@
                         <div class="card h-100">
                             <div class="card-body">
                                 <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">ჩემი განცხადებები</i></h6>
-                                <small>ვეტერინარი <a asp-action="UserProducts" asp-controller="UserProduct">(@Model.VetCount)</a></small>
+                                <small>ვეტერინარი <a asp-action="VetProducts" asp-controller="UserProduct">(@Model.VetCount)</a></small>
                                 <hr />
-                                <small>ძაღლის გასეირნება (0)</small>
+                                <small>ცხოველები <a asp-action="PetProducts" asp-controller="UserProduct">(@Model.PetCount)</a></small>
                                 <hr />
                                 <small>დამაკება (0)</small>
                                 <hr>
@@ -176,19 +183,19 @@
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
 
-<script src="~/js/jquery.min.js"></script>
-<script src="~/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="~/js/popper.min.js"></script>
-<script src="~/js/bootstrap.min.js"></script>
-<script src="~/js/jquery.easing.1.3.js"></script>
-<script src="~/js/jquery.waypoints.min.js"></script>
-<script src="~/js/jquery.stellar.min.js"></script>
-<script src="~/js/jquery.animateNumber.min.js"></script>
-<script src="~/js/bootstrap-datepicker.js"></script>
-<script src="~/js/jquery.timepicker.min.js"></script>
-<script src="~/js/owl.carousel.min.js"></script>
-<script src="~/js/jquery.magnific-popup.min.js"></script>
-<script src="~/js/scrollax.min.js"></script>
+<script src="~/Main/js/jquery.min.js"></script>
+<script src="~/Main/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="~/Main/js/popper.min.js"></script>
+<script src="~/Main/js/bootstrap.min.js"></script>
+<script src="~/Main/js/jquery.easing.1.3.js"></script>
+<script src="~/Main/js/jquery.waypoints.min.js"></script>
+<script src="~/Main/js/jquery.stellar.min.js"></script>
+<script src="~/Main/js/jquery.animateNumber.min.js"></script>
+<script src="~/Main/js/bootstrap-datepicker.js"></script>
+<script src="~/Main/js/jquery.timepicker.min.js"></script>
+<script src="~/Main/js/owl.carousel.min.js"></script>
+<script src="~/Main/js/jquery.magnific-popup.min.js"></script>
+<script src="~/Main/js/scrollax.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-<script src="~/js/google-map.js"></script>
-<script src="~/js/main.js"></script>
+<script src="~/Main/js/google-map.js"></script>
+<script src="~/Main/js/main.js"></script>

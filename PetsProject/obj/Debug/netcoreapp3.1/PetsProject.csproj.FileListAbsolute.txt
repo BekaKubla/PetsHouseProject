@@ -159,7 +159,6 @@ C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserProfile.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Account\UserEdit.cshtml.g.cs
-C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\UserProduct\UserProducts.cshtml.g.cs
 C:\Users\bekak\OneDrive\Desktop\PetsProject\PetsProject\PetsProject\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\bekak\OneDrive\Desktop\PetsProject\PetsProject\PetsProject\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\bekak\OneDrive\Desktop\PetsProject\PetsProject\PetsProject\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -329,3 +328,9 @@ C:\Users\bekak\OneDrive\Desktop\PetsProject\PetsProject\PetsProject\obj\Debug\ne
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.csprojAssemblyReference.cache
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vet\VetEdit.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vet\Search.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Pet\PetReg.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Pet\GetPets.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\UserProduct\VetProducts.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\UserProduct\PetProducts.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Pet\PetDetails.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Pet\PetEdit.cshtml.g.cs
