@@ -231,28 +231,31 @@ namespace PetsProject.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Age")
+                    b.Property<int?>("Age")
                         .HasColumnType("int");
 
-                    b.Property<int>("City")
+                    b.Property<int?>("City")
                         .HasColumnType("int");
 
                     b.Property<string>("ContactName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Jishebi")
+                    b.Property<int?>("Jishebi")
                         .HasColumnType("int");
 
                     b.Property<string>("PetPhotoUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("PetRegistrationDateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Price")
+                    b.Property<int?>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int>("Sex")
+                    b.Property<int?>("Sex")
                         .HasColumnType("int");
 
                     b.Property<string>("Subject")
@@ -310,6 +313,9 @@ namespace PetsProject.Migrations
 
                     b.Property<string>("Position")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("RegistrationDateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Surname")
                         .IsRequired()

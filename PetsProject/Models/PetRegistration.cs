@@ -14,14 +14,15 @@ namespace PetsProject.Models
         public string Title { get; set; }
         public string ContactName { get; set; }
         public string PhoneNumber { get; set; }
-        public int Price { get; set; }
+        public int? Price { get; set; }
         public string Subject { get; set; }
-        public int Age { get; set; }
-        public Sex Sex { get; set; }
-        public Jishebi Jishebi { get; set; }
-        public City City { get; set; }
+        public int? Age { get; set; }
+        public Sex? Sex { get; set; }
+        public Jishebi? Jishebi { get; set; }
+        public City? City { get; set; }
         public string PetPhotoUrl { get; set; }
-        public string UserName { get; internal set; }
+        public string UserName { get;set; }
+        public DateTime PetRegistrationDateTime { get; set; }
     }
     public  enum Sex
     {

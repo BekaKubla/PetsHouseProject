@@ -29,7 +29,7 @@ namespace PetsProject.Controllers
         [HttpGet]
         public IActionResult Vet(VetRegistracion vetRegistracion)
         {
-            var getAll = _context.GetAllVet(vetRegistracion);
+            var getAll = _context.GetAllVet(vetRegistracion).OrderByDescending(e=>e.RegistrationDateTime).ToList();
             return View(getAll);
         }
         [HttpPost]
@@ -92,6 +92,7 @@ namespace PetsProject.Controllers
                 var vet = new VetRegistracion
                 {
                     UserName = findUser.UserName,
+                    RegistrationDateTime=DateTime.Now,
                     Name = vetRegistrationViewModel.Name,
                     Surname = vetRegistrationViewModel.Surname,
                     Age = vetRegistrationViewModel.Age,
@@ -107,9 +108,9 @@ namespace PetsProject.Controllers
 
                 _context.RegisterVet(vet);
                 _context.SaveChange();
-                return RedirectToAction("Vet");
+                return RedirectToAction("VetDetails", "Vet", new { id = vet.ID });
             }
-            return View(vetRegistrationViewModel);
+            return View();
         }
         [HttpGet]
         public IActionResult VetEdit(int id)
@@ -171,7 +172,7 @@ namespace PetsProject.Controllers
                         findVet.VetphotoUrl = vetRegistrationViewModel.VetImageUrl;
                     }
                     _context.SaveChange();
-                    return RedirectToAction("UserProducts", "UserProduct");
+                    return RedirectToAction("VetDetails", "Vet", new { id = findVet.ID });
                 }
             }
             return View();
@@ -185,17 +186,13 @@ namespace PetsProject.Controllers
             {
                 _context.RemoveVet(getVet);
                 _context.SaveChange();
-                return RedirectToAction("UserProducts", "UserProduct");
+                return RedirectToAction("VetProducts", "UserProduct");
             }
             else
             {
                 TempData["Message"] = "მსგავსი განცხადება თქვენ არ გეკუთვნით";
-                return RedirectToAction("Userproducts","UserProduct");
+                return RedirectToAction("VetProducts", "UserProduct");
             }
-        }
-        public IActionResult Details()
-        {
-            return View();
         }
 
     }

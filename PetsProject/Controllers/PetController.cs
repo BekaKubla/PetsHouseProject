@@ -52,11 +52,14 @@ namespace PetsProject.Controllers
                 PetRegistration petRegistration = new PetRegistration()
                 {
                     UserName = findUser.UserName,
+                    PetRegistrationDateTime=DateTime.Now,
                     Age = petRegistrationViewModel.Age,
                     City = petRegistrationViewModel.City,
                     ContactName = petRegistrationViewModel.ContactName,
                     PetPhotoUrl = petRegistrationViewModel.PetPhotoUrl,
                     PhoneNumber = petRegistrationViewModel.PhoneNumber,
+                    Sex= petRegistrationViewModel.Sex,
+                    Jishebi= petRegistrationViewModel.Jishebi,
                     Price = petRegistrationViewModel.Price,
                     Subject = petRegistrationViewModel.Subject,
                     Title = petRegistrationViewModel.Title
@@ -65,14 +68,14 @@ namespace PetsProject.Controllers
                 };
                 _petRegistrationRepo.RegisterPet(petRegistration);
                 _petRegistrationRepo.SaveChange();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("PetDetails", "Pet", new { id = petRegistration.ID });
             }
             return View();
         }
         [HttpGet]
         public IActionResult GetPets(PetRegistration petRegistration)
         {
-            var getAllPet = _petRegistrationRepo.GetAllPet(petRegistration);
+            var getAllPet = _petRegistrationRepo.GetAllPet(petRegistration).OrderByDescending(e=>e.PetRegistrationDateTime);
             return View(getAllPet);
         }
         [HttpPost]
@@ -179,7 +182,7 @@ namespace PetsProject.Controllers
                 {
                     _petRegistrationRepo.RemovePet(findPet);
                     _petRegistrationRepo.SaveChange();
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("PetProducts", "UserProduct");
                 }
             }
             else
@@ -233,36 +236,41 @@ namespace PetsProject.Controllers
         public async Task<IActionResult> PetEditAsync(PetRegistrationViewModel petRegistrationViewModel,int id)
         {
             var findPet = _petRegistrationRepo.GetPetById(id);
-            findPet.Age = petRegistrationViewModel.Age;
-            findPet.City = petRegistrationViewModel.City;
-            findPet.ContactName = petRegistrationViewModel.ContactName;
-            findPet.Jishebi = petRegistrationViewModel.Jishebi;
-            findPet.Price = petRegistrationViewModel.Price;
-            findPet.PhoneNumber = petRegistrationViewModel.PhoneNumber;
-            findPet.Sex = petRegistrationViewModel.Sex;
-            findPet.Subject = petRegistrationViewModel.Subject;
-            findPet.Title = petRegistrationViewModel.Title;
-            if (petRegistrationViewModel.PetPhoto != null)
+            if (ModelState.IsValid)
             {
-                string folder = "Images/PetPhoto/";
-                folder += Guid.NewGuid().ToString() + "_" + petRegistrationViewModel.PetPhoto.FileName;
+                findPet.Age = petRegistrationViewModel.Age;
+                findPet.City = petRegistrationViewModel.City;
+                findPet.ContactName = petRegistrationViewModel.ContactName;
+                findPet.Jishebi = petRegistrationViewModel.Jishebi;
+                findPet.Price = petRegistrationViewModel.Price;
+                findPet.PhoneNumber = petRegistrationViewModel.PhoneNumber;
+                findPet.Sex = petRegistrationViewModel.Sex;
+                findPet.Subject = petRegistrationViewModel.Subject;
+                findPet.Title = petRegistrationViewModel.Title;
+                if (petRegistrationViewModel.PetPhoto != null)
+                {
+                    string folder = "Images/PetPhoto/";
+                    folder += Guid.NewGuid().ToString() + "_" + petRegistrationViewModel.PetPhoto.FileName;
 
-                petRegistrationViewModel.PetPhotoUrl = "/" + folder;
+                    petRegistrationViewModel.PetPhotoUrl = "/" + folder;
 
-                string serverFolder = Path.Combine(_env.WebRootPath, folder);
+                    string serverFolder = Path.Combine(_env.WebRootPath, folder);
 
-                await petRegistrationViewModel.PetPhoto.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+                    await petRegistrationViewModel.PetPhoto.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+                }
+                if (petRegistrationViewModel.PetPhotoUrl == null)
+                {
+                    petRegistrationViewModel.PetPhotoUrl = findPet.PetPhotoUrl;
+                }
+                else
+                {
+                    findPet.PetPhotoUrl = petRegistrationViewModel.PetPhotoUrl;
+                }
+                _petRegistrationRepo.SaveChange();
+                return RedirectToAction("PetDetails", "Pet", new { id = id });
             }
-            if (petRegistrationViewModel.PetPhotoUrl == null)
-            {
-                petRegistrationViewModel.PetPhotoUrl = findPet.PetPhotoUrl;
-            }
-            else
-            {
-                findPet.PetPhotoUrl = petRegistrationViewModel.PetPhotoUrl;
-            }
-            _petRegistrationRepo.SaveChange();
-            return RedirectToAction("PetDetails", "Pet",new { id = id });
+            return View();
+            
         }
     }
 }

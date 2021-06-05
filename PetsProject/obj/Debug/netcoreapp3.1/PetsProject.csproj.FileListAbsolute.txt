@@ -130,7 +130,6 @@ C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsP
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.TagHelpers.input.cache
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.TagHelpers.output.cache
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.RazorCoreGenerate.cache
-C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\Contact.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vet\Vet.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vet\VetDetails.cshtml.g.cs
@@ -146,8 +145,6 @@ C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\stati
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.dll
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.pdb
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.genruntimeconfig.cache
-C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.csproj.CoreCompileInputs.cache
-C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\source\repos\PetsProject\PetsProject\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\User\source\repos\PetsProject\PetsProject\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\User\source\repos\PetsProject\PetsProject\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -327,10 +324,15 @@ C:\Users\bekak\OneDrive\Desktop\PetsProject\PetsProject\PetsProject\obj\Debug\ne
 C:\Users\bekak\OneDrive\Desktop\PetsProject\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.pdb
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.csprojAssemblyReference.cache
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vet\VetEdit.cshtml.g.cs
-C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vet\Search.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Pet\PetReg.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Pet\GetPets.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\UserProduct\VetProducts.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\UserProduct\PetProducts.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Pet\PetDetails.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Pet\PetEdit.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Contact.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\User\source\repos\PetsProject\PetsProject\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\User\source\repos\PetsProject\PetsProject\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.MvcApplicationPartsAssemblyInfo.cache

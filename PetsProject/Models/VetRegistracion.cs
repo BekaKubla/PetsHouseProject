@@ -37,6 +37,7 @@ namespace PetsProject.Models
         [MaxLength(60,ErrorMessage ="მისამართი არ უნდა აღემატებოდეს 60 სიმბოლოს")]
         public string Adress { get; set; }
         public string VetphotoUrl { get; set; }
+        public DateTime RegistrationDateTime { get; set; }
 
     }
     public enum City

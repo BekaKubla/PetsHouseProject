@@ -58,17 +58,16 @@
                     <div class="preview col-md-6">
                         @if (Model.PetPhotoUrl == null)
                         {
-                            <div class="preview-pic tab-content">
-                            <div class="tab-pane active" id="pic-1"><img src="/images/VetPhoto/photonotavailable.jpg" /></div>
-                            </div> 
-                         }
-                         else
-                         {
-                            <div class="preview-pic tab-content">
-                            <div class="tab-pane active" id="pic-1"><img src="@Model.PetPhotoUrl" />
-                            </div>
-                            </div>                      
-                            }
+            <div class="preview-pic tab-content">
+                <div class="tab-pane active" id="pic-1"><img src="/images/VetPhoto/photonotavailable.jpg" /></div>
+            </div> }
+        else
+        {
+<div class="preview-pic tab-content">
+    <div class="tab-pane active" id="pic-1">
+        <img src="@Model.PetPhotoUrl" />
+    </div>
+</div>}
 
                     </div>
                     <div class="details col-md-6">
@@ -77,7 +76,7 @@
                         <h4 class="price">ასაკი: <span style="color:green;">@Model.Age წლის</span></h4>
                         <h4 class="price">ფასი: <span style="color:green;">@Model.Price ლარი</span></h4>
                         <h4 class="price">სქესი: <span style="color:green;">@Model.Sex</span></h4>
-                        <h4 class="price">ჯიში: <span style="color:green;">@Html.DisplayFor(e=>e.Jishebi)</span></h4>
+                        <h4 class="price">ჯიში: <span style="color:green;">@Html.DisplayFor(e => e.Jishebi)</span></h4>
                         <h4 class="price">ქალაქი: <span style="color:green;">@Model.City</span></h4>
                         <h4 class="price">საკონტაქტო სახელი: <span style="color:green;">@Model.ContactName</span></h4>
                         <h4 class="price">ტელეფონის ნომერი: <span style="color:green;">@Model.PhoneNumber</span></h4>
@@ -88,6 +87,10 @@
     </div>
 </body>
 </html>
+
+
+
+
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
 
