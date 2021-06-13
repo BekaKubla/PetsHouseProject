@@ -50,6 +50,20 @@
                 <div class="card mt-3">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <span class="text-secondary"><a asp-controller="Vacancy" asp-action="CreateVacancy" target="_blank" style="color:green;">ძაღლის გასეირნება (ვაკანსიის დამატება)</a></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                            <span class="text-secondary"><a asp-controller="#" asp-action="#" target="_blank" style="color:green;">დამაკება (ვაკანსიის დამატება)</a></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card mt-3">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                             <span class="text-secondary"><a asp-controller="Account" asp-action="LogOut" style="color:red;">გასვლა</a></span>
                         </li>
                     </ul>
@@ -120,14 +134,15 @@
                                 <small>ცხოველები <a asp-action="PetProducts" asp-controller="UserProduct">(@Model.PetCount)</a></small>
                                 <hr />
                                 <small>დამაკება (0)</small>
+                                <hr />
+                                <small>ძაღლის გასეირნება (0)</small>
+                                <hr />
+                                <small>დამაკება (0)</small>
                                 <hr>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         </div>
 
