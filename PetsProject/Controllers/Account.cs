@@ -19,15 +19,17 @@ namespace PetsProject.Controllers
         private readonly IPasswordHasher<AppUser> _passwordHasher;
         private readonly IVetRegistraitonRepo _vetContext;
         private readonly IPetRegistrationRepo _petContext;
+        private readonly IVacancyRepo _vacancyContext;
 
         public Account(UserManager<AppUser>userManager,SignInManager<AppUser>signInManager,IPasswordHasher<AppUser>passwordHasher,
-                        IVetRegistraitonRepo vetRegistraitonRepo,IPetRegistrationRepo petRegistrationRepo)
+                        IVetRegistraitonRepo vetRegistraitonRepo,IPetRegistrationRepo petRegistrationRepo,IVacancyRepo vacancyRepo)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _passwordHasher = passwordHasher;
             _vetContext = vetRegistraitonRepo;
             _petContext = petRegistrationRepo;
+            _vacancyContext = vacancyRepo;
         }
         [HttpGet]
         [AllowAnonymous]
@@ -171,7 +173,7 @@ namespace PetsProject.Controllers
             return View(userEdit);
         }
 
-        public async Task< IActionResult> UserProfile(User user,VetRegistracion vetRegistracion,PetRegistration petRegistration)
+        public async Task< IActionResult> UserProfile(User user,VetRegistracion vetRegistracion,PetRegistration petRegistration,JobVacancy jobVacancy)
         {
             var appUser = await _userManager.FindByNameAsync(User.Identity.Name);
             user.Email = appUser.Email;
@@ -186,6 +188,7 @@ namespace PetsProject.Controllers
             }
             user.VetCount = _vetContext.GetAllVet(vetRegistracion).Where(e => e.UserName == user.UserName).ToList().Count();
             user.PetCount = _petContext.GetAllPet(petRegistration).Where(e => e.UserName == user.UserName).ToList().Count();
+            user.VacancyCount = _vacancyContext.GetAllJob(jobVacancy).Where(e => e.UserName == user.UserName).ToList().Count();
             return View(user);
         }
     }

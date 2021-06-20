@@ -14,12 +14,14 @@ namespace PetsProject.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IVetRegistraitonRepo _vetContext;
         private readonly IPetRegistrationRepo _petContext;
+        private readonly IVacancyRepo _vacancyContext;
 
-        public UserProductController(UserManager<AppUser> userManager,IVetRegistraitonRepo vetContext,IPetRegistrationRepo petContext)
+        public UserProductController(UserManager<AppUser> userManager,IVetRegistraitonRepo vetContext,IPetRegistrationRepo petContext,IVacancyRepo vacancyRepo)
         {
             _userManager = userManager;
             _vetContext = vetContext;
             _petContext = petContext;
+            _vacancyContext = vacancyRepo;
         }
         public async Task<IActionResult> VetProducts(User user, VetRegistracion vetRegistracion)
         {
@@ -35,6 +37,14 @@ namespace PetsProject.Controllers
             user.Email = appUser.Email;
             user.UserName = appUser.UserName;
             var productList = _petContext.GetAllPet(petRegistracion).Where(e => e.UserName == user.UserName).ToList();
+            return View(productList);
+        }
+        public async Task<IActionResult> Vacancys(User user,JobVacancy jobVacancy)
+        {
+            var appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            user.Email = appUser.Email;
+            user.UserName = appUser.UserName;
+            var productList = _vacancyContext.GetAllJob(jobVacancy).Where(e => e.UserName == user.UserName).ToList();
             return View(productList);
         }
     }

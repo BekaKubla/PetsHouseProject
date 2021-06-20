@@ -38,7 +38,7 @@ namespace PetsProject.Models
         public City? City { get; set; }
         [Display(Name = "მოვალეობა")]
         [Required(ErrorMessage = "მოვალეობის შევსება სავალდებულოა")]
-        [MaxLength(100,ErrorMessage = "მოვალეობა უნდა შედგებოდეს მაქსიმუმ 100 სიმბოლოსგან")]
+        [MaxLength(22,ErrorMessage = "მოვალეობა უნდა შედგებოდეს მაქსიმუმ 20 სიმბოლოსგან")]
         public string JobDescription { get; set; }
         [Display(Name ="ვაკანსიის სრული აღწერა")]
         [Required(ErrorMessage ="ვაკანსიის სრული აღწერა სავალდებულოა")]

@@ -53,7 +53,7 @@ namespace PetsProject.Controllers
                 if (searchSallary == "ზრდადი >")
                 {
                     return View(_vacancyRepo.GetAllJob(jobVacancy).OrderByDescending(e => e.Published)
-                                                                  .OrderByDescending(e => e.Sallary)
+                                                                  .OrderBy(e => e.Sallary)
                                                                   .Where(e => e.City.ToString()
                                                                   .StartsWith(searchCity)).Where(e => e.JobName.StartsWith(searchString)));
                 }
@@ -61,7 +61,7 @@ namespace PetsProject.Controllers
                 {
                     return View(_vacancyRepo.GetAllJob(jobVacancy)
                                             .OrderByDescending(e => e.Published)
-                                            .OrderBy(e => e.Sallary)
+                                            .OrderByDescending(e => e.Sallary)
                                             .Where(e => e.City.ToString()
                                             .StartsWith(searchCity)).Where(e => e.JobName.StartsWith(searchString)));
                 }
@@ -76,13 +76,13 @@ namespace PetsProject.Controllers
             {
                 return View(_vacancyRepo.GetAllJob(jobVacancy)
                                         .OrderByDescending(e => e.Published)
-                                        .OrderByDescending(e => e.Sallary));
+                                        .OrderBy(e => e.Sallary));
             }
             else if (searchSallary == "კლებადი <" && searchString == null && searchCity == null)
             {
                 return View(_vacancyRepo.GetAllJob(jobVacancy)
                                         .OrderByDescending(e => e.Published)
-                                        .OrderBy(e => e.Sallary));
+                                        .OrderByDescending(e => e.Sallary));
             }
             else if (searchCity != null && searchString == null && searchSallary == null)
             {
@@ -102,28 +102,29 @@ namespace PetsProject.Controllers
             {
                 return View(_vacancyRepo.GetAllJob(jobVacancy)
                                         .OrderByDescending(e => e.Published)
-                                        .OrderByDescending(e => e.Sallary)
+                                        .OrderBy(e => e.Sallary)
                                         .Where(e => e.JobName.StartsWith(searchString)));
             }
             else if (searchSallary == "კლებადი <" && searchString != null && searchCity == null)
             {
                 return View(_vacancyRepo.GetAllJob(jobVacancy)
                                         .OrderByDescending(e => e.Published)
-                                        .OrderBy(e => e.Sallary)
+                                        .OrderByDescending(e => e.Sallary)
                                         .Where(e => e.JobName.StartsWith(searchString)));
             }
             else if (searchSallary == "ზრდადი >" && searchString == null && searchCity != null) 
             {
                 return View(_vacancyRepo.GetAllJob(jobVacancy)
                         .OrderByDescending(e => e.Published)
-                        .OrderByDescending(e => e.Sallary)
+                        .OrderBy(e => e.Sallary)
                         .Where(e => e.City.ToString().StartsWith(searchCity)));
             }
             else if (searchSallary == "კლებადი <" && searchString == null && searchCity != null)
             {
                 return View(_vacancyRepo.GetAllJob(jobVacancy)
                                         .OrderByDescending(e => e.Published)
-                                        .OrderBy(e => e.Sallary).Where(e => e.City.ToString().StartsWith(searchCity)));
+                                        .OrderByDescending(e => e.Sallary)
+                                        .Where(e => e.City.ToString().StartsWith(searchCity)));
             }
             return View(_vacancyRepo.GetAllJob(jobVacancy).OrderByDescending(e => e.Published));
         }
@@ -141,13 +142,82 @@ namespace PetsProject.Controllers
             {
                 _vacancyRepo.RemoveJob(findVacancy);
                 _vacancyRepo.SaveChange();
-                return RedirectToAction("GetAllVacancy");
+                return RedirectToAction("Vacancys", "UserProduct");
             }
             else
             {
                 ModelState.AddModelError("", "მსგავსი განცხადება თქვენ არ გეკუთვნით");
             }
-            return RedirectToAction("GetAllVacancy");
+            return RedirectToAction("Vacancys", "UserProduct");
+        }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> UpdateVacancy(int id)
+        {
+            var findUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            var findVacancy = _vacancyRepo.GetJobById(id);
+            if (findUser.UserName == findVacancy.UserName)
+            {
+                JobVacancy jobVacancy = new JobVacancy()
+                {
+                    Age = findVacancy.Age,
+                    City = findVacancy.City,
+                    EmployerName = findVacancy.EmployerName,
+                    EndTime = findVacancy.EndTime,
+                    FullDescription = findVacancy.FullDescription,
+                    JobDescription = findVacancy.JobDescription,
+                    JobName = findVacancy.JobName,
+                    PersonSex = findVacancy.PersonSex,
+                    PhoneNumber = findVacancy.PhoneNumber,
+                    Sallary = findVacancy.Sallary,
+                    StartTime = findVacancy.StartTime,
+                    Week = findVacancy.Week,
+                    UserName = findVacancy.UserName,
+                    Published = findVacancy.Published,
+                };
+                return View(jobVacancy);
+            }
+            else
+            {
+                ModelState.AddModelError("", "მსგავსი განცხადება თქვენ არ გეკუთვნით");
+            }
+            return RedirectToAction("Vacancys", "UserProduct");
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> UpdateVacancy(int id,JobVacancy jobVacancy)
+        {
+            var findUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            var findVacancy = _vacancyRepo.GetJobById(id);
+            if (findUser.UserName == findVacancy.UserName)
+            {
+                if (ModelState.IsValid)
+                {
+                    findVacancy.Age = jobVacancy.Age;
+                    findVacancy.City = jobVacancy.City;
+                    findVacancy.EmployerName = jobVacancy.EmployerName;
+                    findVacancy.EndTime = jobVacancy.EndTime;
+                    findVacancy.FullDescription = jobVacancy.FullDescription;
+                    findVacancy.JobDescription = jobVacancy.JobDescription;
+                    findVacancy.JobName = jobVacancy.JobName;
+                    findVacancy.PersonSex = jobVacancy.PersonSex;
+                    findVacancy.PhoneNumber = jobVacancy.PhoneNumber;
+                    findVacancy.Sallary = jobVacancy.Sallary;
+                    findVacancy.StartTime = jobVacancy.StartTime;
+                    findVacancy.Week = jobVacancy.Week;
+                    jobVacancy.UserName=findVacancy.UserName;
+                    jobVacancy.Published = findVacancy.Published;
+                    _vacancyRepo.SaveChange();
+                    return RedirectToAction("GetVacancyById", "Vacancy", new { id = id });
+                }
+                return View();
+            }
+            else
+            {
+                ModelState.AddModelError("", "მსგავსი განცხადება თქვენ არ გეკუთვნით");
+            }
+            return View();
         }
     }
 }

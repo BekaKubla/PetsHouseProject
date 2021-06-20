@@ -102,6 +102,8 @@ namespace PetsProject.Controllers
                 JishebiReplaceString = JishebiReplaceString.Replace(" ", "_");
             }
             //საძიებო ველის ჯიშების ფილტრაცია (დასასრული)
+
+            //საძიებო ველი(დასაწყისი)
             if(searchString == null && searchJishebi == null && searchSex == null && searchCity == null)
             {
                 return View(getAllPet);
@@ -183,6 +185,7 @@ namespace PetsProject.Controllers
                            .Where(e=>e.Jishebi.ToString().StartsWith(JishebiReplaceString))
                            .Where(e=>e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
+            //საძიებო ველი(დასასრული)
 
 
             return View();
@@ -250,7 +253,7 @@ namespace PetsProject.Controllers
             {
                 ModelState.AddModelError("", "მსგავსი განცხადება არ არსებობს");
             }
-            return RedirectToAction("PetProducts", "UserProduct");
+            return RedirectToAction("Vacancys", "UserProduct");
         }
         [HttpPost]
         public async Task<IActionResult> PetEditAsync(PetRegistrationViewModel petRegistrationViewModel,int id)
