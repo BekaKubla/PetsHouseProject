@@ -46,12 +46,13 @@
                                         <input type="text" class="form-control search-slt" name="searchString" placeholder="საძიებო ველი...">
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
-                                        <select class="form-control search-slt" name="searchJishebi">
+                                        <select class="form-control search-slt"name="searchJishebi">
                                             <option disabled selected>ყველა</option>
-                                            @foreach (var item in Enum.GetValues(typeof(PetsProject.Models.Jishebi)))
+                                            @foreach (var yourEnum in Html.GetEnumSelectList<Jishebi>())
                                             {
-                                                <option value="@item">@item</option>
+                                                <option>@yourEnum.Text</option>
                                             }
+
                                         </select>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-12 p-0">
@@ -115,7 +116,7 @@
                             }
                             <div class="product_details">
                                 <h5>@item.Title</h5>
-                                <p style="color:green;">@item.Jishebi.GetDisplayName()</p>
+                                <p style="color:green;">@Html.DisplayFor(model => item.Jishebi)</p>
                                 <p style="color:green;">@item.City</p>
                             </div>
                         </div>

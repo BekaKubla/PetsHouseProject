@@ -79,9 +79,29 @@ namespace PetsProject.Controllers
             return View(getAllPet);
         }
         [HttpPost]
-        public IActionResult GetPets(string searchString,string searchJishebi,string searchSex,string searchCity,PetRegistration petRegistration)
+        public IActionResult GetPets(string searchString,string searchJishebi,string searchSex,string searchCity, PetRegistration petRegistration)
         {
             var getAllPet = _petRegistrationRepo.GetAllPet(petRegistration);
+            //საძიებო ველის ჯიშები (დასაწყისი)
+            string JishebiReplaceString = null;
+            if (searchJishebi.Contains("-"))
+            {
+                JishebiReplaceString = searchJishebi.Replace("-", "_");
+                if (JishebiReplaceString.Contains("(") || JishebiReplaceString.Contains(")"))
+                {
+                    JishebiReplaceString = JishebiReplaceString.Replace("(","");
+                    JishebiReplaceString = JishebiReplaceString.Replace(")","");
+                }
+            }
+            if(JishebiReplaceString==null)
+            {
+                JishebiReplaceString = searchJishebi.Replace(" ", "_");
+            }
+            else if (JishebiReplaceString.Contains(" "))
+            {
+                JishebiReplaceString = JishebiReplaceString.Replace(" ", "_");
+            }
+            //საძიებო ველის ჯიშების ფილტრაცია (დასასრული)
             if(searchString == null && searchJishebi == null && searchSex == null && searchCity == null)
             {
                 return View(getAllPet);
@@ -92,7 +112,7 @@ namespace PetsProject.Controllers
             }
             if(searchString == null && searchJishebi != null && searchSex == null && searchCity == null)
             {
-                return View(getAllPet.Where(e => e.Jishebi.ToString() == searchJishebi));
+                return View(getAllPet.Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString)));
             }
             if(searchString == null && searchJishebi == null && searchSex != null && searchCity == null)
             {
@@ -104,7 +124,7 @@ namespace PetsProject.Controllers
             }
             if(searchString != null && searchJishebi != null && searchSex == null && searchCity == null)
             {
-                return View(getAllPet.Where(e => e.Jishebi.ToString() == searchJishebi)
+                return View(getAllPet.Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString))
                                      .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if (searchString == null && searchJishebi == null && searchSex != null && searchCity != null)
@@ -120,7 +140,7 @@ namespace PetsProject.Controllers
             if(searchString == null && searchJishebi != null && searchSex == null && searchCity != null)
             {
                 return View(getAllPet.Where(e => e.City.ToString() == searchCity)
-                                     .Where(e => e.Jishebi.ToString() == searchJishebi));
+                                     .Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString)));
             }
             if(searchString != null && searchJishebi == null && searchSex == null && searchCity != null)
             {
@@ -129,19 +149,19 @@ namespace PetsProject.Controllers
             }
             if(searchString == null && searchJishebi != null && searchSex != null && searchCity == null)
             {
-                return View(getAllPet.Where(e => e.Jishebi.ToString() == searchJishebi)
+                return View(getAllPet.Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString))
                                      .Where(e => e.Sex.ToString() == searchSex));
             }
             if(searchString != null && searchJishebi != null && searchSex != null && searchCity == null)
             {
-                return View(getAllPet.Where(e => e.Jishebi.ToString() == searchJishebi)
+                return View(getAllPet.Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString))
                                      .Where(e => e.Sex.ToString() == searchSex)
                                      .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if(searchString == null && searchJishebi != null && searchSex != null && searchCity != null)
             {
                 return View(getAllPet.Where(e => e.City.ToString() == searchCity)
-                                     .Where(e => searchJishebi.ToString() == searchJishebi)
+                                     .Where(e => searchJishebi.ToString().StartsWith(JishebiReplaceString))
                                      .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if(searchString != null && searchJishebi == null && searchSex != null && searchCity != null)
@@ -153,14 +173,14 @@ namespace PetsProject.Controllers
             if(searchString != null && searchJishebi != null && searchSex == null && searchCity != null)
             {
                 return View(getAllPet.Where(e => e.City.ToString() == searchCity)
-                                     .Where(e => e.Jishebi.ToString() == searchJishebi)
+                                     .Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString))
                                      .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if(searchString != null && searchJishebi != null && searchSex != null && searchCity != null)
             {
                 return View(getAllPet.Where(e => e.City.ToString() == searchCity)
                            .Where(e=>e.Sex.ToString()==searchSex)
-                           .Where(e=>e.Jishebi.ToString()==searchJishebi)
+                           .Where(e=>e.Jishebi.ToString().StartsWith(JishebiReplaceString))
                            .Where(e=>e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
 

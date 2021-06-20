@@ -32,6 +32,7 @@ namespace PetsProject
             services.AddDbContext<AppDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("PetsHouse")));
             services.AddTransient<IVetRegistraitonRepo, VetRegistrationRepo>();
             services.AddTransient<IPetRegistrationRepo, PetRegistrationRepo>();
+            services.AddTransient<IVacancyRepo, VacancyRepo>();
             services.AddIdentity<AppUser, IdentityRole>(option=>
             {
                 option.Password.RequiredLength = 4;

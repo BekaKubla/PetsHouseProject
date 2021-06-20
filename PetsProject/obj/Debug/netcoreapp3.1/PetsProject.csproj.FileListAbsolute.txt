@@ -337,5 +337,5 @@ C:\Users\User\source\repos\PetsProject\PetsProject\bin\Debug\netcoreapp3.1\MailK
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.csproj.CoreCompileInputs.cache
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\PetsProject.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vacancy\CreateVacancy.cshtml.g.cs
-C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vacancy\FindVacacny.cshtml.g.cs
-C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vacancy\StartVacancyRegistration.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vacancy\GetAllVacancy.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vacancy\GetVacancyById.cshtml.g.cs

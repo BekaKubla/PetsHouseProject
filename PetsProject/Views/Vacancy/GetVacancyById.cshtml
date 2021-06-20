@@ -1,4 +1,4 @@
-﻿@model PetsProject.Models.PetRegistration
+﻿@model PetsProject.Models.JobVacancy
 <head>
     <title>Pet Sitting - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
@@ -44,7 +44,7 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-end">
                 <div class="col-md-9 ftco-animate pb-5">
-                    <p class="breadcrumbs mb-2"><span class="mr-2"><a asp-controller="Home" asp-action="Index">მთავარი <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a asp-controller="Vet" asp-action="Vet">ვეტერინარები <i class="ion-ios-arrow-forward"></i></a></span><span class="mr-2"><a href="#">დეტალურად <i class="ion-ios-arrow-forward"></i></a></span></p>
+                    <p class="breadcrumbs mb-2"><span class="mr-2"><a asp-controller="Home" asp-action="Index">მთავარი <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a asp-controller="Vacancy" asp-action="GetAllVacancy">ყველა ვაკანსია <i class="ion-ios-arrow-forward"></i></a></span><span class="mr-2"><a href="#">დეტალურად <i class="ion-ios-arrow-forward"></i></a></span></p>
                     <h1 class="mb-0 bread">დეტალურად</h1>
                 </div>
             </div>
@@ -56,30 +56,26 @@
             <div class="container-fliud">
                 <div class="wrapper row">
                     <div class="preview col-md-6">
-                        @if (Model.PetPhotoUrl == null)
-                        {
-            <div class="preview-pic tab-content">
-                <div class="tab-pane active" id="pic-1"><img src="/images/VetPhoto/photonotavailable.jpg" /></div>
-            </div> }
-        else
-        {
-<div class="preview-pic tab-content">
-    <div class="tab-pane active" id="pic-1">
-        <img src="@Model.PetPhotoUrl" />
-    </div>
-</div>}
+                            <div class="preview-pic tab-content">
+                                <div class="tab-pane active" id="pic-1">
+                                    <img src="~/Vacancy/Images/vacancy.jpg" />
+                                </div>
+                            </div>
 
                     </div>
                     <div class="details col-md-6">
-                        <h3 class="product-title">@Model.Title</h3>
-                        <p class="product-description">@Model.Subject </p>
-                        <h4 class="price">ასაკი: <span style="color:green;">@Model.Age წლის</span></h4>
-                        <h4 class="price">ფასი: <span style="color:green;">@Model.Price ლარი</span></h4>
-                        <h4 class="price">სქესი: <span style="color:green;">@Model.Sex</span></h4>
-                        <h4 class="price">ჯიში: <span style="color:green;">@Html.DisplayFor(model => model.Jishebi)</span></h4>
+                        <h3 class="product-title">@Model.JobName</h3>
+                        <p class="product-description">@Model.FullDescription </p>
+                        <h4 class="price">ასაკი: <span style="color:green;">@Model.Age წლიდან</span></h4>
+                        <h4 class="price">სქესი: <span style="color:green;">@Html.DisplayFor(model => model.PersonSex)</span></h4>
+                        <h4 class="price">სამუშაო დღე: <span style="color:green;">კვირაში @Html.DisplayFor(model=>model.Week) დღე</span></h4>
+                        <h4 class="price">სამუშაო საათი (დაწყება): <span style="color:green;">@Html.DisplayFor(model => model.StartTime) დან</span></h4>
+                        <h4 class="price">სამუშაო საათი (დასრულება): <span style="color:green;">@Html.DisplayFor(model => model.EndTime) მდე</span></h4>
                         <h4 class="price">ქალაქი: <span style="color:green;">@Model.City</span></h4>
-                        <h4 class="price">საკონტაქტო სახელი: <span style="color:green;">@Model.ContactName</span></h4>
+                        <h4 class="price">ხელფასი: <span style="color:green;">@Model.Sallary ლარი</span></h4>
+                        <h4 class="price">საკონტაქტო სახელი: <span style="color:green;">@Model.EmployerName</span></h4>
                         <h4 class="price">ტელეფონის ნომერი: <span style="color:green;">@Model.PhoneNumber</span></h4>
+                        <p>გამოქვეყნების თარიღი : @Model.Published</p>
                     </div>
                 </div>
             </div>

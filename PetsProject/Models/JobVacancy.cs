@@ -21,9 +21,6 @@ namespace PetsProject.Models
         [Required(ErrorMessage ="ველის შევსელბა სავალდებულოა")]
         [MaxLength(9,ErrorMessage ="ნომერი არასწორია,გადაამოწმეთ შეყვანილი ინფორმაცია (xxx-xx-xx-xx)")]
         public string PhoneNumber { get; set; }
-        [Display(Name ="ელ-ფოსტა")]
-        [EmailAddress(ErrorMessage ="ელ-ფოსტა არასწორია,გადაამოწმეთ შეყვანილი ინფორმაცია")]
-        public string Email { get; set; }
         [Display(Name ="სქესი")]
         [Required(ErrorMessage ="აირჩიეთ სქესი")]
         public PersonSex? PersonSex { get; set; }
@@ -48,13 +45,20 @@ namespace PetsProject.Models
         [MaxLength(300,ErrorMessage ="აღწერა უნდა შედგებოდეს მაქსიმუმ 300 სიმბოლოსგან")]
         public string FullDescription { get; set; }
         [Display(Name ="ხელფასი")]
-        public int Sallary { get; set; }
+        public int? Sallary { get; set; }
         public DateTime Published { get; set; }
+        [Display(Name ="საკონტაქტო სახელი")]
+        [Required(ErrorMessage = "სახელის შევსება სავალდებულოა")]
+        [MaxLength(20)]
+        public string EmployerName { get; set; }
+        public string UserName { get; set; }
     }
     public enum PersonSex
     {
         მდედრობითი,
         მამრობითი,
+        [Display(Name ="არ აქვს მნიშვნელობა")]
+        nebismieri
     }
     public enum Week
     {

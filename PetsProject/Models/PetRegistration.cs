@@ -32,189 +32,178 @@ namespace PetsProject.Models
     public enum Jishebi
     {
         [Display(Name ="ავსტრალიური ნაგაზი")]
-        avstraliuri_nagazi,
+        ავსტრალიური_ნაგაზი,
         [Display(Name = "ამერიკული აკიტა")]
-        amerikuli_akita,
+        ამერიკული_აკიტა,
         [Display(Name = "ამერიკული ბულდოგი")]
-        amerikuli_buldogi,
+        ამერიკული_ბულდოგი,
         [Display(Name = "ამერიკული ბული")]
-        amerikuli_buli,
+        ამერიკული_ბული,
         [Display(Name = "ამერიკული კოკერ-სპანიელი")]
-        amerikuli_koker_spanieli,
+        ამერიკული_კოკერ_სპანიელი,
         [Display(Name = "ამერიკული სტეფორდშირტერიერი")]
-        amerikuli_stefordshirterieri,
+        ამერიკული_სტეფორდშირტერიერი,
         [Display(Name = "ამერიკული დოგი")]
-        argentinuli_dogi,
+        ამერიკული_დოგი,
         [Display(Name = "აღმოსავლურ-ევროპული ნაგაზი")]
-        agmosavluri_evropuli_nagazi,
+        აღმოსავლურ_ევროპული_ნაგაზი,
         [Display(Name = "აღმოსავლურ-ციმბირული ლაიკა")]
-        agmosavluri_cimbiruli_laika,
+        აღმოსავლურ_ციმბირული_ლაიკა,
         [Display(Name = "ბელგიური-ნაგაზი (მალინუა)")]
-        belgiuri_nagazi_malinua,
+        ბელგიური_ნაგაზი_მალინუა,
         [Display(Name = "ბერნი ზენენჰუდი")]
-        bernis_zenenhudi,
+        ბერნი_ზენენჰუდი,
         [Display(Name = "ბიგლი")]
-        bigli,
+        ბიგლი,
         [Display(Name = "ბორდერ-კოლი")]
-        border_koli,
+        ბორდერ_კოლი,
         [Display(Name = "ბორდოული დოგი")]
-        bordouli_dogi,
+        ბორდოული_დოგი,
         [Display(Name = "ბოქსიორი")]
-        boqsiori,
+        ბოქსიორი,
         [Display(Name = "ბრაზილიური ფილა")]
-        braziluri_fila,
+        ბრაზილიური_ფილა,
         [Display(Name = "პრეტონული ესპანიული")]
-        bretonuli_espaniuli,
+        პრეტონული_ესპანიული,
         [Display(Name = "ბულმასტიფი")]
-        bulmastifi,
+        ბულმასტიფი,
         [Display(Name = "ბულტერიერი")]
-        bulterieri,
+        ბულტერიერი,
         [Display(Name = "გერმანული-დოგი")]
-        germanuli_dogi,
+        გერმანული_დოგი,
         [Display(Name = "გერმანული-იაგდტერიერი")]
-        germanuli_iagdterieri,
+        გერმანული_იაგდტერიერი,
         [Display(Name = "გერმანული-ნაგაზი")]
-        germanuli_nagazi,
+        გერმანული_ნაგაზი,
         [Display(Name = "გრძელბალნიანი კოლი")]
-        grdzelbalniani_koli,
+        გრძელბალნიანი_კოლი,
         [Display(Name = "დალმატინელი")]
-        dalmatineli,
+        დალმატინელი,
         [Display(Name = "დასავლეთ ციმბირული ლაიკა")]
-        dasavlet_cimbiruli_laika,
+        დასავლეთ_ციმბირული_ლაიკა,
         [Display(Name = "დობერმანი")]
-        dobermani,
+        დობერმანი,
         [Display(Name = "დრახტარი")]
-        dratxari,
+        დრახტარი,
         [Display(Name = "ერდელტერიერი")]
-        erdelterieri,
+        ერდელტერიერი,
         [Display(Name = "ესპანული დოგი")]
-        espanuri_dogi,
+        ესპანული_დოგი,
         [Display(Name = "ვეიმარანერი")]
-        veimaraneri,
+        ვეიმარანერი,
         [Display(Name = "თეთრი შვეიცარული ნაგაზი")]
-        tetri_shveicaruli_nagazi,
+        თეთრი_შვეიცარული_ნაგაზი,
         [Display(Name = "იაპონური აკიტა")]
-        iaponuri_akita,
+        იაპონური_აკიტა,
         [Display(Name = "ინგლისურ-რუსული მდევარი")]
-        inglisur_rusuli_mdevari,
+        ინგლისურ_რუსული_მდევარი,
         [Display(Name = "ინგლისური ბულდოგი")]
-        inglisuri_buldogi,
+        ინგლისური_ბულდოგი,
         [Display(Name = "ინგლისური სეტერი")]
-        inglisuri_seteri,
+        ინგლისური_სეტერი,
         [Display(Name = "იორკშირ ტერიერი")]
-        iorkshir_terieri,
+        იორკშირ_ტერიერი,
         [Display(Name = "ირლანდიური მგელთამგუდავი")]
-        irlandiuri_mgeltamgudavi,
+        ირლანდიური_მგელთამგუდავი,
         [Display(Name = "ირლანდიური სეტერი")]
-        irlandiuri_seteri,
+        ირლანდიური_სეტერი,
         [Display(Name = "კავკასური ნაგაზი")]
-        kavkasiuri_nagazi,
+        კავკასური_ნაგაზი,
         [Display(Name = "კანე კორსო")]
-        kane_korso,
+        კანე_კორსო,
         [Display(Name = "კოკერ სპანიელი")]
-        koker_spanieli,
+        კოკერ_სპანიელი,
         [Display(Name = "კურცჰაარი")]
-        kurchaari,
+        კურცჰაარი,
         [Display(Name = "ლაბრადორ რეტრივერი")]
-        labrador_retriveri,
+        ლაბრადორ_რეტრივერი,
         [Display(Name = "ლევრეტკა")]
-        levretka,
+        ლევრეტკა,
         [Display(Name = "მალამუტი")]
-        malamuti,
+        მალამუტი,
         [Display(Name = "მალტეზე")]
-        malteze,
+        მალტეზე,
         [Display(Name = "მალტიპუ")]
-        maltipu,
+        მალტიპუ,
         [Display(Name = "მასტინო")]
-        mastino,
+        მასტინო,
         [Display(Name = "მეტისი")]
-        metisi,
+        მეტისი,
         [Display(Name = "მექსიკური შიშველი ძაღლი")]
-        meqsikuri_shishveli_dzagli,
+        მექსიკური_შიშველი_ძაღლი,
         [Display(Name = "მოპსი")]
-        mopsi,
+        მოპსი,
         [Display(Name = "ოქროს რეტრივერი")]
-        oqros_retriveri,
+        ოქროს_რეტრივერი,
         [Display(Name = "პეკინესი")]
-        pekinesi,
+        პეკინესი,
         [Display(Name = "პიტ ბულტერიერი")]
-        pit_bulterieri,
+        პიტ_ბულტერიერი,
         [Display(Name = "პომერანიული შპიცი")]
-        pomeraniuli_shpici,
+        პომერანიული_შპიცი,
         [Display(Name = "პუდელი")]
-        pudeli,
-        [Display(Name = "როდეზიული_რიჯბექი")]
-        rodeziuli_rijbeqi,
+        პუდელი,
+        [Display(Name = "როდეზიული რიჯბექი")]
+        როდეზიული_რიჯბექი,
         [Display(Name = "როტვეილერი")]
-        rotveileri,
+        როტვეილერი,
         [Display(Name = "რუსულ-ევროპული ლაიკა")]
-        rusul_evropuli_laika,
+        რუსულ_ევროპული_ლაიკა,
         [Display(Name = "რუსული ტოი ტერიერი")]
-        rusuli_toi_terieri,
+        რუსული_ტოი_ტერიერი,
         [Display(Name = "სალუკი")]
-        saluki,
+        სალუკი,
         [Display(Name = "სამოედური ლაიკა")]
-        samoeduro_laika,
+        სამოედური_ლაიკა,
         [Display(Name = "სამხრეთ-რუსული ნაგაზი")]
-        samxtret_rusuli_nagazi,
+        სამხრეთ_რუსული_ნაგაზი,
         [Display(Name = "სენბერნარი")]
-        senbernari,
+        სენბერნარი,
         [Display(Name = "სკოჩ ტერიერი")]
-        skoch_terieri,
+        სკოჩ_ტერიერი,
         [Display(Name = "სტეფორშირ ბულტერიერი")]
-        stefordshir_bulterieri,
+        სტეფორშირ_ბულტერიერი,
         [Display(Name = "ტაილანდური რიჯბექი")]
-        tailanduri_rijbeqi,
+        ტაილანდური_რიჯბექი,
         [Display(Name = "ტაქსა")]
-        taqsa,
+        ტაქსა,
         [Display(Name = "ტიბეტური მასტიფი")]
-        tibeturi_mastifi,
+        ტიბეტური_მასტიფი,
         [Display(Name = "ინგლისური ვიჯლა")]
-        ingruli_vijla,
+        ინგლისური_ვიჯლა,
         [Display(Name = "ფოქტერიერი")]
-        foqterieri,
+        ფოქტერიერი,
         [Display(Name = "ფრანგული ბულდოგი")]
-        franguli_buldogi,
+        ფრანგული_ბულდოგი,
         [Display(Name = "ქართული ნაგაზი")]
-        qartuli_nagazi,
+        ქართული_ნაგაზი,
         [Display(Name = "შარ-პეი")]
-        shar_pei,
+        შარ_პეი,
         [Display(Name = "ში-ცუ")]
-        shi_cu,
+        ში_ცუ,
         [Display(Name = "შიბა")]
-        shiba,
+        შიბა,
         [Display(Name = "შოტლანდიური ნაგაზი")]
-        shotlandiuri_nagazi,
+        შოტლანდიური_ნაგაზი,
         [Display(Name = "შოტლანდირუ სეტერი (გორდონი)")]
-        shotlandiuri_seteri_gordoni,
+        შოტლანდირუ_სეტერი_გორდონი,
         [Display(Name = "შუააზიური ნაგაზი")]
-        shuaaziuri_nagazi,
+        შუააზიური_ნაგაზი,
         [Display(Name = "ჩაუ-ჩაუ")]
-        chau_chau,
+        ჩაუ_ჩაუ,
         [Display(Name = "ჩინური ქოჩორა ძაღლი")]
-        chinuri_qochora_dzagli,
+        ჩინური_ქოჩორა_ძაღლი,
         [Display(Name = "ჩიხუახუა")]
-        chixuaxua,
+        ჩიხუახუა,
         [Display(Name = "ცვერგპიჩერი")]
-        cvergpicheri,
+        ცვერგპიჩერი,
         [Display(Name = "ცვერგშნაუცერი")]
-        cvergshnauceri,
+        ცვერგშნაუცერი,
         [Display(Name = "ციმბირული ჰასკი")]
-        cimbiruli_haski,
+        ციმბირული_ჰასკი,
         [Display(Name = "ჯეკ რასელ ტერიერი")]
-        jek_rasel_terieri,
+        ჯეკ_რასელ_ტერიერი,
         [Display(Name = "სხვა")]
-        sxva
-    }
-    public static class EnumExtensions
-    {
-        public static string GetDisplayName(this Enum enumValue)
-        {
-            return enumValue.GetType()
-                            .GetMember(enumValue.ToString())
-                            .First()
-                            .GetCustomAttribute<DisplayAttribute>()
-                            .GetName();
-        }
+        სხვაs
     }
 }
