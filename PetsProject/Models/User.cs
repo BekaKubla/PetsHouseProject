@@ -13,7 +13,7 @@ namespace PetsProject.Models
         [Display(Name ="სახელი")]
         public string UserName { get; set; }
         [Display(Name ="ელ-ფოსტა")]
-        [Required(ErrorMessage ="ელ-ფოსტის მითითება სავალდებულოა"),EmailAddress]
+        [Required(ErrorMessage ="ელ-ფოსტის მითითება სავალდებულოა"),EmailAddress(ErrorMessage ="ელ-ფოსტა არასწორადაა შეყვანილი")]
         public string Email { get; set; }
         [Display(Name ="პაროლი")]
         [Required(ErrorMessage =("პაროლის ჩაწერა აუცილებელია"))]

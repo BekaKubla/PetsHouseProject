@@ -38,12 +38,7 @@
                     </p>
                     <h1 class="mb-0 bread">ჩემი განცხადებები</h1>
                     <br />
-                    @if (TempData["Message"] != null)
-                    {
-                        <div>
-                            <h6 class="text-danger">@TempData["Message"]</h6>
-                        </div>
-                    }
+                    @Html.ValidationMessage("VacancyUpdateAuthorize")
                 </div>
             </div>
         </div>

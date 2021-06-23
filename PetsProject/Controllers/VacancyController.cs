@@ -179,7 +179,7 @@ namespace PetsProject.Controllers
             }
             else
             {
-                ModelState.AddModelError("", "მსგავსი განცხადება თქვენ არ გეკუთვნით");
+                ModelState.AddModelError("VacancyUpdateAuthorize", "მსგავსი განცხადება თქვენ არ გეკუთვნით");
             }
             return RedirectToAction("Vacancys", "UserProduct");
         }
