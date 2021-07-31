@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetsProject.Data;
 
 namespace PetsProject.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210731101430_DamakebaUser")]
+    partial class DamakebaUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -238,16 +240,13 @@ namespace PetsProject.Migrations
                     b.Property<int>("City")
                         .HasColumnType("int");
 
-                    b.Property<string>("DamakebaPhotoUrl")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
-                    b.Property<int>("Document")
-                        .HasColumnType("int");
+                    b.Property<string>("Document")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmployeName")
                         .IsRequired()

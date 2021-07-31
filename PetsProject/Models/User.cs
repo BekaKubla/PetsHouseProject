@@ -22,6 +22,7 @@ namespace PetsProject.Models
         public int VetCount { get; set; }
         public int PetCount { get; set; }
         public int VacancyCount { get; set; }
+        public int DamakebaCount { get; set; }
         [Required(ErrorMessage = "სქესის არჩევა აუცილებელია")]
         [Display(Name = "სქესი")]
         public int UserGender { get; set; }

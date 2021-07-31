@@ -15,13 +15,15 @@ namespace PetsProject.Controllers
         private readonly IVetRegistraitonRepo _vetContext;
         private readonly IPetRegistrationRepo _petContext;
         private readonly IVacancyRepo _vacancyContext;
+        private readonly IDamakebaNoDocumentRepo _damakebaContext;
 
-        public UserProductController(UserManager<AppUser> userManager,IVetRegistraitonRepo vetContext,IPetRegistrationRepo petContext,IVacancyRepo vacancyRepo)
+        public UserProductController(UserManager<AppUser> userManager,IVetRegistraitonRepo vetContext,IPetRegistrationRepo petContext,IVacancyRepo vacancyRepo,IDamakebaNoDocumentRepo damakebaNoDocumentRepo)
         {
             _userManager = userManager;
             _vetContext = vetContext;
             _petContext = petContext;
             _vacancyContext = vacancyRepo;
+            _damakebaContext = damakebaNoDocumentRepo;
         }
         public async Task<IActionResult> VetProducts(User user, VetRegistracion vetRegistracion)
         {
@@ -45,6 +47,14 @@ namespace PetsProject.Controllers
             user.Email = appUser.Email;
             user.UserName = appUser.UserName;
             var productList = _vacancyContext.GetAllJob(jobVacancy).Where(e => e.UserName == user.UserName).ToList();
+            return View(productList);
+        }
+        public async Task<IActionResult> DamakebaProducts(User user, Damakeba damakeba)
+        {
+            var appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+            user.Email = appUser.Email;
+            user.UserName = appUser.UserName;
+            var productList = _damakebaContext.GetAllProduct(damakeba).Where(e => e.UserName == user.UserName).ToList();
             return View(productList);
         }
     }

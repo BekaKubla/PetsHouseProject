@@ -25,7 +25,7 @@ namespace PetsProject.ViewModels
         public string Subject { get; set; }
         [Required(ErrorMessage = ("ასაკის მითითება სავალდებულოა"))]
         public int? Age { get; set; }
-        [Required(ErrorMessage ="სქესის არჩევა სავალდებულოა")]
+        [Required(ErrorMessage = "სქესის არჩევა სავალდებულოა")]
         public Sex? Sex { get; set; }
         [Required(ErrorMessage = "ჯიშის არჩევა სავალდებულოა")]
         public Jishebi? Jishebi { get; set; }

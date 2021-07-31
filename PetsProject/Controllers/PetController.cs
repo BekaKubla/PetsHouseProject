@@ -84,7 +84,7 @@ namespace PetsProject.Controllers
             var getAllPet = _petRegistrationRepo.GetAllPet(petRegistration);
             //საძიებო ველის ჯიშები (დასაწყისი)
             string JishebiReplaceString = null;
-            if (searchJishebi.Contains("-"))
+            if (searchJishebi!=null&& searchJishebi.Contains("-"))
             {
                 JishebiReplaceString = searchJishebi.Replace("-", "_");
                 if (JishebiReplaceString.Contains("(") || JishebiReplaceString.Contains(")"))
@@ -93,11 +93,11 @@ namespace PetsProject.Controllers
                     JishebiReplaceString = JishebiReplaceString.Replace(")","");
                 }
             }
-            if(JishebiReplaceString==null)
+            if(JishebiReplaceString==null&&searchJishebi!=null)
             {
                 JishebiReplaceString = searchJishebi.Replace(" ", "_");
             }
-            else if (JishebiReplaceString.Contains(" "))
+            if (searchJishebi != null&&JishebiReplaceString.Contains(" "))
             {
                 JishebiReplaceString = JishebiReplaceString.Replace(" ", "_");
             }
@@ -256,7 +256,7 @@ namespace PetsProject.Controllers
             return RedirectToAction("Vacancys", "UserProduct");
         }
         [HttpPost]
-        public async Task<IActionResult> PetEditAsync(PetRegistrationViewModel petRegistrationViewModel,int id)
+        public async Task<IActionResult> PetEdit(PetRegistrationViewModel petRegistrationViewModel,int id)
         {
             var findPet = _petRegistrationRepo.GetPetById(id);
             if (ModelState.IsValid)

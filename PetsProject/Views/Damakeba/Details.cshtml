@@ -58,7 +58,14 @@
                     <div class="preview col-md-6">
                         <div class="preview-pic tab-content">
                             <div class="tab-pane active" id="pic-1">
+                                @if (Model.DamakebaPhotoUrl == null)
+                                {
                                 <img src="~/images/VetPhoto/photonotavailable.jpg"/>
+                                }
+                                else
+                                {
+                                    <img src="@Model.DamakebaPhotoUrl"/>
+                                }
                             </div>
                         </div>
 
@@ -69,7 +76,7 @@
                         <h4 class="price">ძაღლის ასაკი: <span style="color:green;">@Model.Age წლის</span></h4>
                         <h4 class="price">ძაღლის სქესი: <span style="color:green;">@Model.Sex</span></h4>
                         <h4 class="price">ძაღლის ჯიში: <span style="color:green;">@Html.DisplayFor(model => model.Jishebi)</span></h4>
-                        <h4 class="price">ძაღლის საბუთი: <span style="color:green;">@Model.Document</span></h4>
+                        <h4 class="price">ძაღლის საბუთი: <span style="color:green;">@Html.DisplayFor(model => model.Document)</span></h4>
                         <h4 class="price">ქალაქი: <span style="color:green;">@Model.City</span></h4>
                         <h4 class="price">საკონტაქტო სახელი: <span style="color:green;">@Model.EmployeName</span></h4>
                         <h4 class="price">ტელეფონის ნომერი: <span style="color:green;">@Model.PhoneNumber</span></h4>

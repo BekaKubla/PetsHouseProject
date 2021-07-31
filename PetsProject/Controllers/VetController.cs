@@ -43,10 +43,11 @@ namespace PetsProject.Controllers
             else if (searchString != null && searchCity == null)
             {
                 var getVetBySearch = _context.GetAllVet(vetRegistracion).Where(e => e.Name.ToLower().Contains(searchString.ToLower())
-                                                                               || e.Surname.ToLower().Contains(searchString.ToLower()));
+                                                                               || e.Surname.ToLower().Contains(searchString.ToLower())
+                                                                               || e.PhoneNumber.Contains(searchString));
                 return View(getVetBySearch);
             }
-            else if (searchCity!=null && searchString == null)
+            else if (searchCity != null && searchString == null)
             {
                 var getVetByCity = _context.GetAllVet(vetRegistracion).Where(e => e.City.ToString().Contains(searchCity));
                 return View(getVetByCity);
@@ -55,7 +56,8 @@ namespace PetsProject.Controllers
             {
                 var getVetByBoth = _context.GetAllVet(vetRegistracion).Where(e => e.City.ToString().Contains(searchCity))
                                    .Where(e => e.Name.ToLower().Contains(searchString.ToLower())
-                                   || e.Surname.ToLower().Contains(searchString));
+                                   || e.Surname.ToLower().Contains(searchString)
+                                   ||e.PhoneNumber.Contains(searchString));
                 return View(getVetByBoth);
             }
             return View();

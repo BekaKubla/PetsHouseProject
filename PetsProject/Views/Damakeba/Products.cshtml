@@ -76,16 +76,28 @@
                 <div class="col-lg-3 col-md-4 col-sm-12">
                     <div class="card product_item">
                         <div class="body">
+                            @if (item.DamakebaPhotoUrl == null)
+                            {
                                 <div class="cp_img">
-                                    <img style="width:auto;height:auto;" src="/images/VetPhoto/photonotavailable.jpg" alt="Product" class="img-fluid">
+                                    <img src="/images/VetPhoto/photonotavailable.jpg" alt="Product" class="img-fluid">
+                                    <div class="hover">
+                                        <a asp-action="PetDetails" asp-route-id="@item.ID"><p style="color:green;">დეტალურად</p></a>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="cp_img">
+                                    <img style="width:auto;height:auto;" src="@item.DamakebaPhotoUrl" alt="Product" class="img-fluid">
                                     <div class="hover">
                                         <a asp-action="Details" asp-route-id="@item.ID"><p style="color:green;">დეტალურად</p></a>
                                     </div>
                                 </div>
+                            }
                             <div class="product_details">
                                 <h5>@item.Title</h5>
                                 <p style="color:green;">@item.City</p>
-                                <p style="color:green;">@item.Document</p>
+                                <p style="color:green;">@Html.DisplayFor(model => item.Document)</p>
                             </div>
                         </div>
                     </div>
