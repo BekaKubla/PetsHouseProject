@@ -341,3 +341,8 @@ C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vacancy\GetVacancyById.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\UserProduct\Vacancys.cshtml.g.cs
 C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Vacancy\UpdateVacancy.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Damakeba\Index.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Damakeba\NoDocument.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Damakeba\Details.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Damakeba\Products.cshtml.g.cs
+C:\Users\User\source\repos\PetsProject\PetsProject\obj\Debug\netcoreapp3.1\Razor\Views\Damakeba\WithDocument.cshtml.g.cs

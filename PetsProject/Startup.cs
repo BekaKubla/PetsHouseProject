@@ -33,6 +33,7 @@ namespace PetsProject
             services.AddTransient<IVetRegistraitonRepo, VetRegistrationRepo>();
             services.AddTransient<IPetRegistrationRepo, PetRegistrationRepo>();
             services.AddTransient<IVacancyRepo, VacancyRepo>();
+            services.AddTransient<IDamakebaNoDocumentRepo, DamakebaNoDocumentRepo>();
             services.AddIdentity<AppUser, IdentityRole>(option=>
             {
                 option.Password.RequiredLength = 4;

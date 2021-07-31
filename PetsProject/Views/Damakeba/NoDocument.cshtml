@@ -1,0 +1,105 @@
+﻿@model PetsProject.Models.Damakeba
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<link href="~/VetRegistration/css/VetRegistration.css" rel="stylesheet" />
+
+<div class="container">
+    <h1 class="well">დამაკება</h1>
+    <div class="col-lg-12 well">
+        <div class="row">
+            <form method="post" autocomplete="off" enctype="multipart/form-data" asp-controller="Damakeba" asp-action="NoDocument">
+                <div class="col-sm-12">
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>სათაური</label>
+                            <input type="text" asp-for="Title" autocomplete="off" placeholder="ჩაწერეთ სათაური.." class="form-control">
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+                    <div class="col-sm-6 form-group">
+                        <label>სქესი</label>
+                        <select asp-for="Sex" class="form-control" asp-items="@Html.GetEnumSelectList<PetsProject.Models.Sex>()">
+                            <option value="">გთხოვთ აირჩიეთ სქესი..</option>
+                        </select>
+                        <span asp-validation-for="Sex" class="text-danger"></span>
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 form-group">
+                            <label>ჯიში</label>
+                            <select asp-for="Jishebi" class="form-control" asp-items="@Html.GetEnumSelectList<PetsProject.Models.Jishebi>()">
+                                <option  value="">გთხოვთ აირჩიეთ ჯიში..</option>
+                            </select>
+                            <span asp-validation-for="Jishebi" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label>ქალაქი</label>
+                            <select asp-for="City" class="form-control" asp-items="@Html.GetEnumSelectList<PetsProject.Models.City>()">
+                                <option value="">გთხოვთ აირჩიეთ ჯიში..</option>
+                            </select>
+                            <span asp-validation-for="City" class="text-danger"></span>
+                        </div>
+                        <div class="col-sm-4 form-group">
+                            <label>ძაღლის ასაკი</label>
+                            <input type="text" placeholder="ჩაწერეთ ძაღლის ასაკი.." autocomplete="off" asp-for="Age" class="form-control">
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 form-group">
+                            <label>აღწერა</label>
+                            <textarea placeholder="დაწერეთ თქვენს შესახებ(მაქს.300 სიტყვა).." asp-for="Description" rows="3" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 form-group">
+                            <label>თქვენი სახელი</label>
+                            <input type="text" placeholder="ჩაწერეთ თქვენი სახელი.." autocomplete="off" asp-for="EmployeName" class="form-control">
+                            <span asp-validation-for="EmployeName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>მობილურის ნომერი</label>
+                        <input type="text" placeholder=" xxx xx xx xx.." asp-for="PhoneNumber" autocomplete="off" class="form-control">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group">
+                        <label>ატვირთე ფოტო (ატვირთეთ თუ არსებობს ფოტო)</label>
+                        <div class="custom-file">
+                            <input asp-for="VetPhoto" class="custom-file-input" />
+                            <label class="custom-file-label" for="customFile">ფოტოს ატვირთვა...</label>
+                            <span asp-validation-for="VetPhoto" class="text-danger">ფოტოს ზომა : 3x4</span>
+                        </div>
+                    </div>*@
+                    <button type="submit" class="btn btn-lg btn-info">განცხადების დამატება</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg></div>
+
+
+<script src="~/Main/js/jquery.min.js"></script>
+<script src="~/Main/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="~/Main/js/popper.min.js"></script>
+<script src="~/Main/js/bootstrap.min.js"></script>
+<script src="~/Main/js/jquery.easing.1.3.js"></script>
+<script src="~/Main/js/jquery.waypoints.min.js"></script>
+<script src="~/Main/js/jquery.stellar.min.js"></script>
+<script src="~/Main/js/jquery.animateNumber.min.js"></script>
+<script src="~/Main/js/bootstrap-datepicker.js"></script>
+<script src="~/Main/js/jquery.timepicker.min.js"></script>
+<script src="~/Main/js/owl.carousel.min.js"></script>
+<script src="~/Main/js/jquery.magnific-popup.min.js"></script>
+<script src="~/Main/js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="~/Main/js/google-map.js"></script>
+<script src="~/Main/js/main.js"></script>

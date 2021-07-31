@@ -22,7 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Damakeba\" />
     <Folder Include="wwwroot\images\PetPhoto\" />
   </ItemGroup>
 

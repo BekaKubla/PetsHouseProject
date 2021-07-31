@@ -204,6 +204,6 @@ namespace PetsProject.Models
         [Display(Name = "ჯეკ რასელ ტერიერი")]
         ჯეკ_რასელ_ტერიერი,
         [Display(Name = "სხვა")]
-        სხვაs
+        სხვა
     }
 }
