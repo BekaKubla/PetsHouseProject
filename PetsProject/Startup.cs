@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Hangfire;
+using Hangfire.MemoryStorage;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PetsProject.Data;
+using PetsProject.HangFireJob.Vet;
 using PetsProject.Models;
 using PetsProject.Repositories;
 
@@ -44,10 +47,17 @@ namespace PetsProject
             })
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
+            services.AddHangfire(config =>
+            config.SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
+            .UseSimpleAssemblyNameTypeSerializer()
+            .UseDefaultTypeSerializer()
+            .UseMemoryStorage());
+            services.AddHangfireServer();
+            services.AddTransient<IVetJob, VetJob>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IBackgroundJobClient backgroundJobClient, IRecurringJobManager recurringJobManager, IServiceProvider serviceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -67,6 +77,8 @@ namespace PetsProject
             app.UseRouting();
             app.UseStaticFiles();
             app.UseMvcWithDefaultRoute();
+            app.UseHangfireDashboard("/EYEt<_1e*dj.jYpO=(");
+            recurringJobManager.AddOrUpdate("Run every hour", () => serviceProvider.GetService<IVetJob>().VetCurrnetJob(), Cron.Minutely);
 
         }
     }

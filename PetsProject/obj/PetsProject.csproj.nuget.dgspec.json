@@ -38,6 +38,14 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
+            "Hangfire": {
+              "target": "Package",
+              "version": "[1.7.24, )"
+            },
+            "Hangfire.MemoryStorage": {
+              "target": "Package",
+              "version": "[1.7.0, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[2.12.0, )"
