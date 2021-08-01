@@ -1,4 +1,4 @@
-﻿@model PetsProject.Models.Damakeba
+﻿@model PetsProject.ViewModels.DamakebaViewModel
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -17,19 +17,19 @@
                             <input type="text" asp-for="Title" autocomplete="off" placeholder="ჩაწერეთ სათაური.." class="form-control">
                             <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
-                    <div class="col-sm-6 form-group">
-                        <label>სქესი</label>
-                        <select asp-for="Sex" class="form-control" asp-items="@Html.GetEnumSelectList<PetsProject.Models.Sex>()">
-                            <option value="">გთხოვთ აირჩიეთ სქესი..</option>
-                        </select>
-                        <span asp-validation-for="Sex" class="text-danger"></span>
-                    </div>
+                        <div class="col-sm-6 form-group">
+                            <label>სქესი</label>
+                            <select asp-for="Sex" class="form-control" asp-items="@Html.GetEnumSelectList<PetsProject.Models.Sex>()">
+                                <option value="">გთხოვთ აირჩიეთ სქესი..</option>
+                            </select>
+                            <span asp-validation-for="Sex" class="text-danger"></span>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-4 form-group">
                             <label>ჯიში</label>
                             <select asp-for="Jishebi" class="form-control" asp-items="@Html.GetEnumSelectList<PetsProject.Models.Jishebi>()">
-                                <option  value="">გთხოვთ აირჩიეთ ჯიში..</option>
+                                <option value="">გთხოვთ აირჩიეთ ჯიში..</option>
                             </select>
                             <span asp-validation-for="Jishebi" class="text-danger"></span>
                         </div>
@@ -65,14 +65,14 @@
                         <input type="text" placeholder=" xxx xx xx xx.." asp-for="PhoneNumber" autocomplete="off" class="form-control">
                         <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                     </div>
-                    @*<div class="form-group">
+                    <div class="form-group">
                         <label>ატვირთე ფოტო (ატვირთეთ თუ არსებობს ფოტო)</label>
                         <div class="custom-file">
-                            <input asp-for="VetPhoto" class="custom-file-input" />
+                            <input asp-for="DamakebaPhoto" class="custom-file-input" />
                             <label class="custom-file-label" for="customFile">ფოტოს ატვირთვა...</label>
-                            <span asp-validation-for="VetPhoto" class="text-danger">ფოტოს ზომა : 3x4</span>
+                            <span asp-validation-for="DamakebaPhoto" class="text-danger">ფოტოს ზომა : 3x4</span>
                         </div>
-                    </div>*@
+                    </div>
                     <button type="submit" class="btn btn-lg btn-info">განცხადების დამატება</button>
                 </div>
             </form>

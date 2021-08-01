@@ -36,7 +36,7 @@ namespace PetsProject.Controllers
                 jobVacancy.UserName = User.Identity.Name;
                 _vacancyRepo.CreateJob(jobVacancy);
                 _vacancyRepo.SaveChange();
-                return RedirectToAction("GetAllVacancy");
+                return RedirectToAction("GetVacancyById", "Vacancy", new { id = jobVacancy.Id });
             }
             return View();
         }
@@ -55,7 +55,8 @@ namespace PetsProject.Controllers
                     return View(_vacancyRepo.GetAllJob(jobVacancy).OrderByDescending(e => e.Published)
                                                                   .OrderBy(e => e.Sallary)
                                                                   .Where(e => e.City.ToString()
-                                                                  .StartsWith(searchCity)).Where(e => e.JobName.StartsWith(searchString)));
+                                                                  .StartsWith(searchCity)).Where(e => e.JobName.StartsWith(searchString)
+                                                                  ||e.PhoneNumber.Contains(searchString)));
                 }
                 else if (searchSallary == "კლებადი <")
                 {
@@ -63,14 +64,16 @@ namespace PetsProject.Controllers
                                             .OrderByDescending(e => e.Published)
                                             .OrderByDescending(e => e.Sallary)
                                             .Where(e => e.City.ToString()
-                                            .StartsWith(searchCity)).Where(e => e.JobName.StartsWith(searchString)));
+                                            .StartsWith(searchCity)).Where(e => e.JobName.StartsWith(searchString)
+                                            || e.PhoneNumber.Contains(searchString)));
                 }
             }
             else if (searchString != null && searchSallary == null && searchCity == null)
             {
                 return View(_vacancyRepo.GetAllJob(jobVacancy)
                                         .OrderByDescending(e => e.Published)
-                                        .Where(e => e.JobName.StartsWith(searchString)));
+                                        .Where(e => e.JobName.StartsWith(searchString) 
+                                        || e.PhoneNumber.Contains(searchString)));
             }
             else if (searchSallary == "ზრდადი >" && searchString == null && searchCity == null)
             {
@@ -96,21 +99,24 @@ namespace PetsProject.Controllers
                                         .OrderByDescending(e => e.Published)
                                         .Where(e => e.City.ToString()
                                         .StartsWith(searchCity))
-                                        .Where(e => e.JobName.StartsWith(searchString)));
+                                        .Where(e => e.JobName.StartsWith(searchString) 
+                                        || e.PhoneNumber.Contains(searchString)));
             }
             else if (searchSallary == "ზრდადი >" && searchString != null && searchCity == null)
             {
                 return View(_vacancyRepo.GetAllJob(jobVacancy)
                                         .OrderByDescending(e => e.Published)
                                         .OrderBy(e => e.Sallary)
-                                        .Where(e => e.JobName.StartsWith(searchString)));
+                                        .Where(e => e.JobName.StartsWith(searchString) 
+                                        || e.PhoneNumber.Contains(searchString)));
             }
             else if (searchSallary == "კლებადი <" && searchString != null && searchCity == null)
             {
                 return View(_vacancyRepo.GetAllJob(jobVacancy)
                                         .OrderByDescending(e => e.Published)
                                         .OrderByDescending(e => e.Sallary)
-                                        .Where(e => e.JobName.StartsWith(searchString)));
+                                        .Where(e => e.JobName.StartsWith(searchString) 
+                                        || e.PhoneNumber.Contains(searchString)));
             }
             else if (searchSallary == "ზრდადი >" && searchString == null && searchCity != null) 
             {

@@ -37,24 +37,31 @@ namespace PetsProject.Controllers
         {
             if (searchString == null && searchCity == null)
             {
-                var getAllVet = _context.GetAllVet(vetRegistracion);
+                var getAllVet = _context.GetAllVet(vetRegistracion)
+                                .OrderByDescending(e=>e.RegistrationDateTime);
                 return View(getAllVet);
             }
             else if (searchString != null && searchCity == null)
             {
-                var getVetBySearch = _context.GetAllVet(vetRegistracion).Where(e => e.Name.ToLower().Contains(searchString.ToLower())
-                                                                               || e.Surname.ToLower().Contains(searchString.ToLower())
-                                                                               || e.PhoneNumber.Contains(searchString));
+                var getVetBySearch = _context.GetAllVet(vetRegistracion)
+                                    .OrderByDescending(e => e.RegistrationDateTime)
+                                    .Where(e => e.Name.ToLower().Contains(searchString.ToLower())
+                                    || e.Surname.ToLower().Contains(searchString.ToLower())
+                                    || e.PhoneNumber.Contains(searchString));
                 return View(getVetBySearch);
             }
             else if (searchCity != null && searchString == null)
             {
-                var getVetByCity = _context.GetAllVet(vetRegistracion).Where(e => e.City.ToString().Contains(searchCity));
+                var getVetByCity = _context.GetAllVet(vetRegistracion)
+                                  .OrderByDescending(e => e.RegistrationDateTime)
+                                  .Where(e => e.City.ToString().Contains(searchCity));
                 return View(getVetByCity);
             }
             else if (searchString != null && searchCity != null)
             {
-                var getVetByBoth = _context.GetAllVet(vetRegistracion).Where(e => e.City.ToString().Contains(searchCity))
+                var getVetByBoth = _context.GetAllVet(vetRegistracion)
+                                   .OrderByDescending(e => e.RegistrationDateTime)
+                                   .Where(e => e.City.ToString().Contains(searchCity))
                                    .Where(e => e.Name.ToLower().Contains(searchString.ToLower())
                                    || e.Surname.ToLower().Contains(searchString)
                                    ||e.PhoneNumber.Contains(searchString));

@@ -30,7 +30,7 @@ namespace PetsProject.Controllers
             var appUser = await _userManager.FindByNameAsync(User.Identity.Name);
             user.Email = appUser.Email;
             user.UserName = appUser.UserName;
-            var productList = _vetContext.GetAllVet(vetRegistracion).Where(e => e.UserName == user.UserName).ToList();
+            var productList = _vetContext.GetAllVet(vetRegistracion).Where(e => e.UserName == user.UserName).OrderByDescending(e=>e.RegistrationDateTime).ToList();
             return View(productList);
         }
         public async Task<IActionResult> PetProducts(User user, PetRegistration petRegistracion)
@@ -38,7 +38,7 @@ namespace PetsProject.Controllers
             var appUser = await _userManager.FindByNameAsync(User.Identity.Name);
             user.Email = appUser.Email;
             user.UserName = appUser.UserName;
-            var productList = _petContext.GetAllPet(petRegistracion).Where(e => e.UserName == user.UserName).ToList();
+            var productList = _petContext.GetAllPet(petRegistracion).Where(e => e.UserName == user.UserName).OrderByDescending(e=>e.PetRegistrationDateTime).ToList();
             return View(productList);
         }
         public async Task<IActionResult> Vacancys(User user,JobVacancy jobVacancy)
@@ -46,7 +46,7 @@ namespace PetsProject.Controllers
             var appUser = await _userManager.FindByNameAsync(User.Identity.Name);
             user.Email = appUser.Email;
             user.UserName = appUser.UserName;
-            var productList = _vacancyContext.GetAllJob(jobVacancy).Where(e => e.UserName == user.UserName).ToList();
+            var productList = _vacancyContext.GetAllJob(jobVacancy).Where(e => e.UserName == user.UserName).OrderByDescending(e=>e.Published).ToList();
             return View(productList);
         }
         public async Task<IActionResult> DamakebaProducts(User user, Damakeba damakeba)
@@ -54,7 +54,7 @@ namespace PetsProject.Controllers
             var appUser = await _userManager.FindByNameAsync(User.Identity.Name);
             user.Email = appUser.Email;
             user.UserName = appUser.UserName;
-            var productList = _damakebaContext.GetAllProduct(damakeba).Where(e => e.UserName == user.UserName).ToList();
+            var productList = _damakebaContext.GetAllProduct(damakeba).Where(e => e.UserName == user.UserName).OrderByDescending(e=>e.Published).ToList();
             return View(productList);
         }
     }

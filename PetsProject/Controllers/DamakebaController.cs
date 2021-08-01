@@ -93,7 +93,7 @@ namespace PetsProject.Controllers
             {
                 _damakebaNoDoucument.RemoveProduct(findProduct);
                 _damakebaNoDoucument.SaveChange();
-                return RedirectToAction("UserProfile", "Account");
+                return RedirectToAction("DamakebaProducts", "UserProduct");
             }
             return View();
         }
@@ -151,61 +151,50 @@ namespace PetsProject.Controllers
                 product.Document = damakeba.Document;
                 damakeba.Published = product.Published;
                 _damakebaNoDoucument.SaveChange();
-                return RedirectToAction("UserProfile","Account");
+                return RedirectToAction("Details", new { id = damakeba.ID });
             }
             return View();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         [HttpGet]
         public IActionResult NoDocument()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult NoDocument(Damakeba damakeba,int id)
+        public async Task<IActionResult> NoDocument(DamakebaViewModel damakebaViewModel)
         {
             if (ModelState.IsValid)
             {
+                if (damakebaViewModel.DamakebaPhoto != null)
+                {
+                    string folder = "Images/DamakebaPhoto/";
+                    folder += Guid.NewGuid().ToString() + "_" + damakebaViewModel.DamakebaPhoto.FileName;
+
+                    damakebaViewModel.DamakebaPhotoUrl = "/" + folder;
+
+                    string serverFolder = Path.Combine(_env.WebRootPath, folder);
+
+                    await damakebaViewModel.DamakebaPhoto.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+                }
+                Damakeba damakeba = new Damakeba
+                {
+                    Published = DateTime.Now,
+                    Document = Document.No,
+                    UserName = User.Identity.Name,
+                    DamakebaPhotoUrl = damakebaViewModel.DamakebaPhotoUrl,
+                    Title = damakebaViewModel.Title,
+                    Jishebi = damakebaViewModel.Jishebi,
+                    Sex = damakebaViewModel.Sex,
+                    City = damakebaViewModel.City,
+                    Age = damakebaViewModel.Age,
+                    Description = damakebaViewModel.Description,
+                    EmployeName = damakebaViewModel.EmployeName,
+                    PhoneNumber = damakebaViewModel.PhoneNumber,
+                };
                 damakeba.Published = DateTime.Now;
-                damakeba.Document = Document.No;
                 _damakebaNoDoucument.CreateProduct(damakeba);
                 _damakebaNoDoucument.SaveChange();
-                return RedirectToAction("Details",new { id = id });
+                return RedirectToAction("Details",new { id = damakeba.ID});
             }
             return View();
         }

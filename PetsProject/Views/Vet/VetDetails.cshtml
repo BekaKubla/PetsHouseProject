@@ -78,12 +78,14 @@
                         }
                         else
                         {
-            <h4 class="price">კომპანია: <span style="color:green;">@Model.CompanyName</span></h4>}
+                        <h4 class="price">კომპანია: <span style="color:green;">@Model.CompanyName</span></h4>}
                         <h4 class="price">პოზიცია: <span style="color:green;">@Model.Position</span></h4>
                         <h4 class="price">ქალაქი: <span style="color:green;">@Model.City</span></h4>
                         <h4 class="price">მისამართი: <span style="color:green;">@Model.Adress</span></h4>
                         <h4 class="price">ელ-ფოსტა: <span style="color:green;">@Model.Email</span></h4>
                         <h4 class="price">ტელეფონის ნომერი: <span style="color:green;">@Model.PhoneNumber</span></h4>
+                        <p style="color:gray">განცხადების გამოქვეყნების დრო</p>
+                        <p style="color:gray">@Model.RegistrationDateTime.ToString("dd/MM/yyyy HH:mm")</p>
                     </div>
                 </div>
             </div>

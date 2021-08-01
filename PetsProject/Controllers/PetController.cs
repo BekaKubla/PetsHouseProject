@@ -106,81 +106,96 @@ namespace PetsProject.Controllers
             //საძიებო ველი(დასაწყისი)
             if(searchString == null && searchJishebi == null && searchSex == null && searchCity == null)
             {
-                return View(getAllPet);
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime));
             }
             if (searchString != null && searchJishebi == null && searchSex == null && searchCity == null)
             {
-                return View(getAllPet.Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if(searchString == null && searchJishebi != null && searchSex == null && searchCity == null)
             {
-                return View(getAllPet.Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString)));
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString)));
             }
             if(searchString == null && searchJishebi == null && searchSex != null && searchCity == null)
             {
-                return View(getAllPet.Where(e => e.Sex.ToString() == searchSex));
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.Sex.ToString() == searchSex));
             }
             if(searchString == null && searchJishebi == null && searchSex == null && searchCity != null)
             {
-                return View(getAllPet.Where(e => e.City.ToString() == searchCity));
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.City.ToString() == searchCity));
             }
             if(searchString != null && searchJishebi != null && searchSex == null && searchCity == null)
             {
-                return View(getAllPet.Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString))
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString))
                                      .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if (searchString == null && searchJishebi == null && searchSex != null && searchCity != null)
             {
-                return View(getAllPet.Where(e => e.City.ToString() == searchCity)
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.City.ToString() == searchCity)
                                      .Where(e => e.Sex.ToString() == searchSex));
             }
             if(searchString != null && searchJishebi == null && searchSex != null && searchCity == null)
             {
-                return View(getAllPet.Where(e => e.Sex.ToString() == searchSex)
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.Sex.ToString() == searchSex)
                                      .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if(searchString == null && searchJishebi != null && searchSex == null && searchCity != null)
             {
-                return View(getAllPet.Where(e => e.City.ToString() == searchCity)
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.City.ToString() == searchCity)
                                      .Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString)));
             }
             if(searchString != null && searchJishebi == null && searchSex == null && searchCity != null)
             {
-                return View(getAllPet.Where(e => e.City.ToString() == searchCity)
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.City.ToString() == searchCity)
                                      .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if(searchString == null && searchJishebi != null && searchSex != null && searchCity == null)
             {
-                return View(getAllPet.Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString))
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString))
                                      .Where(e => e.Sex.ToString() == searchSex));
             }
             if(searchString != null && searchJishebi != null && searchSex != null && searchCity == null)
             {
-                return View(getAllPet.Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString))
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString))
                                      .Where(e => e.Sex.ToString() == searchSex)
                                      .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if(searchString == null && searchJishebi != null && searchSex != null && searchCity != null)
             {
-                return View(getAllPet.Where(e => e.City.ToString() == searchCity)
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.City.ToString() == searchCity)
                                      .Where(e => searchJishebi.ToString().StartsWith(JishebiReplaceString))
                                      .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if(searchString != null && searchJishebi == null && searchSex != null && searchCity != null)
             {
-                return View(getAllPet.Where(e => e.City.ToString() == searchCity)
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.City.ToString() == searchCity)
                                      .Where(e => e.Sex.ToString() == searchSex)
                                      .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if(searchString != null && searchJishebi != null && searchSex == null && searchCity != null)
             {
-                return View(getAllPet.Where(e => e.City.ToString() == searchCity)
+                return View(getAllPet.OrderByDescending(e => e.PetRegistrationDateTime)
+                                     .Where(e => e.City.ToString() == searchCity)
                                      .Where(e => e.Jishebi.ToString().StartsWith(JishebiReplaceString))
                                      .Where(e => e.Title.Contains(searchString) || e.PhoneNumber == searchString));
             }
             if(searchString != null && searchJishebi != null && searchSex != null && searchCity != null)
             {
                 return View(getAllPet.Where(e => e.City.ToString() == searchCity)
+                           .OrderByDescending(e => e.PetRegistrationDateTime)
                            .Where(e=>e.Sex.ToString()==searchSex)
                            .Where(e=>e.Jishebi.ToString().StartsWith(JishebiReplaceString))
                            .Where(e=>e.Title.Contains(searchString) || e.PhoneNumber == searchString));
